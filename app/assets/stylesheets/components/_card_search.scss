@@ -1,0 +1,40 @@
+.title-date{
+  background-color: #943F22;
+  justify-content: space-between;
+  color: white;
+  border-radius: 5px 5px 0 0;
+  padding: 5px 20px;
+  padding-bottom: 0px;
+  font-size: large;
+  align-items: center;
+}
+
+.title-search h3{
+  font-size: 30px;
+}
+
+.card-search{
+  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
+  border-radius: 5px;
+  margin: 20px 0px;
+  font-family: Nunito;
+}
+
+.date-search{
+  flex-direction: column;
+}
+
+.comment-search{
+  padding: 5px 20px;
+  padding-right: 10px;
+}
+
+.comment-share{
+  align-items: end;
+}
+
+.share-search{
+  color: #D5B78A;
+  font-size:30px;
+  padding-right: 20px;
+}

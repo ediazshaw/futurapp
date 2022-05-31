@@ -1,0 +1,16 @@
+<h1>Entries#search</h1>
+<% @entries.each do |entry| %>
+  <div class="card-search">
+    <div class="title-date d-flex">
+      <div class="title-search"><h3><%= entry.theme %></h3></div>
+      <div class="date-search d-flex">
+        <p><i class="fa-solid fa-pen-to-square"></i>&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p>
+        <p><i class="fa-solid fa-calendar-check"></i>&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+      </div>
+    </div>
+    <div class="comment-share d-flex">
+      <div class="comment-search"><%= entry.comment %></div>
+      <div class="share-search"><i class="fa-solid fa-share-nodes"></i></div>
+    </div>
+  </div>
+<% end %>

@@ -17,6 +17,10 @@ class EntriesController < ApplicationController
     end
   end
 
+  def search
+    @entries = Entry.all
+  end
+
   def show
     @entry = Entry.find(params[:id])
   end
