@@ -1,0 +1,7 @@
+<%= simple_form_for entry do |f|%>
+  <%= f.association :category, as: :check_boxes, include_hidden: false  %>
+  <%= f.input :theme %>
+  <%= f.input :remember_date %>
+  <%= f.input :comment, placeholder: 'Type your answer here...' %>
+  <%= f.submit "Submit" %>
+<% end %>

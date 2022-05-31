@@ -1,2 +1,17 @@
 <h1>Entries#index</h1>
 <p>Find me in app/views/entries/index.html.erb</p>
+
+
+<div class="card-category-new-form">
+  <div class="card-category__topic">
+    <div class="card-category__img">
+      <%= image_tag 'mars2.jpg' %>
+    </div>
+    <div class="card-category__questions">
+      <p>How and when do you think humans will land on Mars?</p>
+    </div>
+  </div>
+  <div class="card-category__form">
+    <%= render 'form', entry: Entry.new %>
+  </div>
+</div>
