@@ -1,0 +1,20 @@
+.lateral-navbar {
+  background-color: #d77b3e;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  width: 100px;
+}
+.menu-icons {
+  width: 80px;
+  max-width: 100%;
+  // .icons {
+
+  // }
+}
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  object-fit: cover;
+  border-radius: 50%;
+}
