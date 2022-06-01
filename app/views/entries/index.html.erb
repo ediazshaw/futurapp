@@ -1,30 +1,12 @@
-
-<%= render 'shared/navbar_lateral' %>
-<h1>Entries#index</h1>
-
-<p>Find me in app/views/entries/index.html.erb</p>
+<%= render 'shared/navbar' %>
 
 
-<div class="card-category-new-form">
-  <div class="card-category__topic">
-      <p class="card-question-title">Question of the Day</p>
-    <div class="card-category__img">
-      <%= image_tag 'mars2.jpg' %>
-    </div>
-    <div class="card-category__questions">
-      <p>How and when do you think humans will land on Mars?</p>
-    </div>
-  </div>
-  <div class="card-category__form">
-    <%= render 'form', entry: Entry.new %>
-  </div>
-</div>
 
-<% @entries.each do |entry| %>
+
+<!--<% @entries.each do |entry| %>
   <h3><%= entry.theme %></h3>
   <p><%= entry.comment %></p>
   <p><%= entry.remember_date %></p>
   <p><%= entry.created_at %></p>
   <%= link_to "Show", entry_path(entry) %>
 <% end %>
-

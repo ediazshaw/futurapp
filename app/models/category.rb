@@ -1,4 +1,4 @@
 class Category < ApplicationRecord
-  has_many :entries
-  has_many :question_days
+  has_many :entries, dependent: :destroy
+  has_many :question_days, dependent: :destroy
 end

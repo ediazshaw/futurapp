@@ -9,7 +9,7 @@
 }
 
 .banner-home img{
-  width: 38%;
+  width: 35%;
   animation: rotation 10s infinite linear;
 }
 
@@ -56,3 +56,18 @@
 .card-category-new-form{
   align-items: center;
 }
+
+.page-container-home{
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+// .underbanner{
+//   width: 100%;
+// }
+
+// .underbanner img{
+//   width: 100%;
+//   height: 100px;
+// }
