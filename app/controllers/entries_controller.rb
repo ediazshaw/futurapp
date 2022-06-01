@@ -23,6 +23,7 @@ class EntriesController < ApplicationController
 
   def show
     @entry = Entry.find(params[:id])
+    @category_entries = Entry.where(created_at:(Date.today.beginning_of_day..Date.today.end_of_day)).group_by(&:category_id)
   end
 
   private
