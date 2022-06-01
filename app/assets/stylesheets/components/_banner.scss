@@ -1,0 +1,73 @@
+@font-face { font-family: 'Fun City'; src: url('Fun-city.otf'); }
+@import url('https://fonts.googleapis.com/css2?family=Bungee+Shade&family=Lora&family=Poppins:wght@100;200&family=Roboto:wght@100&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Anek+Bangla:wght@300&family=Bungee+Shade&family=Lora&family=Poppins:wght@100;200&family=Roboto:wght@100&display=swap');
+.banner-home{
+  width: 100%;
+  align-items: center;
+  flex-direction: column;
+  height: 100vh;
+}
+
+.banner-home img{
+  width: 35%;
+  animation: rotation 10s infinite linear;
+}
+
+@keyframes rotation {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(359deg);
+  }
+}
+
+.title-home h1{
+  font-family: 'Fun City';
+  color: #D77B3E;
+  font-size: 80px;
+}
+
+.subtitle-home{
+  font-family: 'Anek Bangla', sans-serif;
+  color: #D77B3E;
+  font-size: 30px;
+}
+
+.btn-home a {
+  color: #D77B3E;
+  border: 1px solid #D77B3E;
+  padding: 8px 24px;
+  border-radius: 50px;
+  font-weight: lighter;
+  opacity: 1;
+  transition: opacity 0.3s ease;
+  text-decoration: none;
+}
+
+.btn-home{
+  margin-top: 20px;
+}
+
+.btn-home a:hover {
+  opacity: 0.8;
+}
+
+.card-category-new-form{
+  align-items: center;
+}
+
+.page-container-home{
+  flex-direction: column;
+  align-items: center;
+  margin-bottom: 50px;
+}
+
+// .underbanner{
+//   width: 100%;
+// }
+
+// .underbanner img{
+//   width: 100%;
+//   height: 100px;
+// }

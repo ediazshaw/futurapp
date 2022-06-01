@@ -15,12 +15,14 @@
 @import "components/navbar_lateral";
 @import "pages/index";
 @import "components/_card_search";
+@import "components/_banner";
 @import "components/navbar";
 
 .page-container {
   display: grid;
   min-height: 100vh;
   grid-template-rows: auto 1fr auto;
+  background-color: white;
 }
 
 .content-container{

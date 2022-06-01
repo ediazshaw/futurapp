@@ -1,18 +1,28 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-hello
-
-<div class="card-category-new-form">
-  <div class="card-category__topic">
-      <p class="card-question-title">Question of the Day</p>
-    <div class="card-category__img">
-      <%= image_tag 'mars2.jpg' %>
+<div class="page-container page-container-home d-flex">
+  <div class="banner-home d-flex">
+    <%= image_tag "logo.png" %>
+    <div class="title-home">
+      <h1>FUTURAPP</h1>
     </div>
-    <div class="card-category__questions">
-      <p>How and when do you think humans will land on Mars?</p>
+    <div class="subtitle-home">
+      <span data-controller="typed-js"></span>
+    </div>
+    <div class="btn-home">
+      <a href="#awesome-stuff-here" data-controller="scroll-to">Answer Question of the Day</a>
     </div>
   </div>
-  <div class="card-category__form">
-    <%= render 'entries/form', entry: @entry || Entry.new %>
+  <div class="card-category-new-form" id="awesome-stuff-here">
+    <div class="card-category__topic">
+        <p class="card-question-title">Question of the Day</p>
+      <div class="card-category__img">
+        <%= image_tag 'mars2.jpg' %>
+      </div>
+      <div class="card-category__questions">
+        <p>How and when do you think humans will land on Mars?</p>
+      </div>
+    </div>
+    <div class="card-category__form">
+      <%= render 'entries/form', entry: @entry || Entry.new %>
+    </div>
   </div>
 </div>
