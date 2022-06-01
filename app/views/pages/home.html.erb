@@ -1,8 +1,16 @@
-<h1>Pages#home</h1>
-<p>Find me in app/views/pages/home.html.erb</p>
-hello
-
-<div class="card-category-new-form">
+<div class="banner-home d-flex">
+  <%= image_tag "logo.png" %>
+  <div class="title-home">
+    <h1>FUTURAPP</h1>
+  </div>
+  <div class="subtitle-home">
+    <span data-controller="typed-js"></span>
+  </div>
+  <div class="btn-home">
+    <a href="#awesome-stuff-here" data-controller="scroll-to">Answer Question of the Day</a>
+  </div>
+</div>
+<div class="card-category-new-form" id="awesome-stuff-here">
   <div class="card-category__topic">
     <div class="card-category__img">
       <%= image_tag 'mars2.jpg' %>
@@ -15,3 +23,5 @@ hello
     <%= render 'entries/form', entry: Entry.new %>
   </div>
 </div>
+
+<%= image_tag "underbanner.jpeg" %>
