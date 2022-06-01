@@ -11,9 +11,9 @@ class EntriesController < ApplicationController
     @entry = Entry.new(entry_params)
     @entry.user = current_user
     if @entry.save
-      redirect_to entry_path(@entry)
+      redirect_to entries_path
     else
-      render :new
+      render "pages/home"
     end
   end
 
@@ -28,6 +28,6 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:theme, :comment, :remember_date, :question_day, :created_at, :photo)
+    params.require(:entry).permit(:theme, :comment, :remember_date, :question_day, :created_at, :photo, :category_id)
   end
 end

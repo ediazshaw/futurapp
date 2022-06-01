@@ -4,6 +4,7 @@ hello
 
 <div class="card-category-new-form">
   <div class="card-category__topic">
+      <p class="card-question-title">Question of the Day</p>
     <div class="card-category__img">
       <%= image_tag 'mars2.jpg' %>
     </div>
@@ -12,6 +13,6 @@ hello
     </div>
   </div>
   <div class="card-category__form">
-    <%= render 'entries/form', entry: Entry.new %>
+    <%= render 'entries/form', entry: @entry || Entry.new %>
   </div>
 </div>
