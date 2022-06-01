@@ -11,14 +11,12 @@
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css">
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload', defer: true %>
     <link rel="stylesheet" href="https://use.fontawesome.com/releases/v6.1.1/css/all.css">
+    <script src="https://code.iconify.design/2/2.2.1/iconify.min.js"></script>
   </head>
 
   <body>
   <div class="page-container">
     <%= render 'shared/flashes' %>
-    <p class="notice"><%= notice %></p>
-    <p class="alert"><%= alert %></p>
-    <div class="navbar-container"><%= render "shared/navbar" %></div>
     <div class="content-container"><%= yield %></div>
   </div>
   </body>
