@@ -1,46 +1,14 @@
 <h1>This shows date through cat ent</h1>
 
-<% @category_entries.each do |category, entries| %>
-  <% entries.each do |entry| %>
-    <p><%= entry.theme %></p>
-    <% say_name = Category.find(entry.category_id)%>
-    <%= say_name.category %>
-    <p><%= entry.comment %></p>
-    <p><%= entry.remember_date %></p>
-    <p><%= entry.created_at %></p>
-  <% end %>
-<% end %>
-
-<% @category_entries.each do |category, entries| %>
-  <% entries.each do |entry| %>
     <div class="card-category-show-card">
       <div class="card-category__show-topic">
-        <% say_name = Category.find(entry.category_id)%>
-          <% if say_name.category == "Prediction" %>
-              <p class="card-show-question-title">Predictions</p>
-            <div class="card-category__show-img">
-              <%= image_tag 'predictions.jpg' %>
-            </div>
-            <div class="card-category__questions">
-              <p>Can you predict the future? Tell us your most wild predictions...</p>
-            </div>
-          <% elsif say_name.category == "Thought" %>
-              <p class="card-show-question-title">Thoughts</p>
-            <div class="card-category__show-img">
-              <%= image_tag 'thought.jpg' %>
-            </div>
-            <div class="card-category__questions">
-              <p>What is on your mind? Tell us how you feel today...</p>
-            </div>
-          <% elsif say_name.category == "Event" %>
-              <p class="card-show-question-title">Events</p>
-            <div class="card-category__show-img">
-              <%= image_tag 'event.jpg' %>
-            </div>
-            <div class="card-category__questions">
-              <p>Did something big happen today? Tell us about your event...</p>
-            </div>
-          <% end %>
+        <p class="card-show-question-title">Events</p>
+        <div class="card-category__show-img">
+          <%= image_tag 'event.jpg' %>
+        </div>
+        <div class="card-category__questions">
+          <p>Did something big happen today? Tell us about your event...</p>
+        </div>
       </div>
       <div class="card-category__show">
         <div class="category-day-inline">
@@ -48,42 +16,51 @@
             <p class="hover-line-style">Question of the day</p>
           </div>
           <div class="card-text-categories-style">
-            <p><%= entry.created_at.strftime("%d-%b-%y") %></p>
+            <p><%= params[:id] %></p>
             <p class="hover-line-style">Predictions</p>
           </div>
           <div class="card-text-categories-style">
-            <p><%= entry.created_at.strftime("%d-%b-%y") %></p>
+            <p><%= params[:id] %></p>
             <p class="hover-line-style">Thoughts</p>
           </div>
           <div class="card-text-categories-style">
-            <p><%= entry.created_at.strftime("%d-%b-%y") %></p>
+            <p><%= params[:id] %></p>
             <p class="hover-line-style">Events</p>
           </div>
           <div class="card-text-categories-style">
-            <p><%= entry.created_at.strftime("%d-%b-%y") %></p>
+            <p><%= params[:id] %></p>
             <p class="hover-line-style">Predicted</p>
           </div>
         </div>
         <hr>
-            <p class="card-text-titles-style">Theme</p>
-            <p class="response-text-user"><%= entry.theme %></p>
-            <hr>
-            <div class="date-inline">
-                <div>
-                  <p class="card-text-titles-style">Today's date</p>
-                  <p class="response-text-user"><%= entry.created_at.strftime("%d-%b-%Y") %></p>
-                </div>
-                <div>
-                  <p class="card-text-titles-style">Predicted date</p>
-                  <p class="response-text-user"><%= entry.remember_date.strftime("%d-%b-%Y") %></p>
-                </div>
+
+<% @category_entries.each do |category, entries| %>
+  <div class="show-inline-flex d-flex">
+  <h1><%= category %></h1>
+    <% entries.each do |entry| %>
+    <div>
+      <div>
+        <p class="card-text-titles-style">Theme</p>
+        <p class="response-text-user response-text-user-margin"><%= entry.theme %></p>
+      </div>
+      <div>
+          <div class="margin-dates-show d-flex">
+            <div>
+              <p class="card-text-dates-style"><i class="fa-solid fa-pen-to-square"></i>&nbsp&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p>
+              <p class="card-text-dates-style"><i class="fa-solid fa-calendar-check"></i>&nbsp&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
             </div>
-            <hr>
-            <p class="response-text-user"><%= entry.comment %></p>
-            <hr>
-            <button class="card-button-show button-text"> Share</button>
-            <button class="card-button-add-show button-text">Add new <%= say_name.category %></button>
+            <div class="response-icon-share">
+              <i class="fa-solid fa-share-nodes"></i>
+            </div>
+          </div>
       </div>
     </div>
-  <% end %>
+      <hr>
+    <% end %>
+  </div>
 <% end %>
+
+            <%# <button class="card-button-show button-text"> Share</button> %>
+            <%= link_to new_entry_path do %>
+              <button class="card-button-add-show button-text">Add new</button>
+            <% end %>
