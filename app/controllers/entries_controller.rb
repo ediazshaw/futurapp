@@ -23,8 +23,8 @@ class EntriesController < ApplicationController
     if params[:query].present?
       @entries = @entries.search(params[:query])
     end
-    if params[:category].present?
-      @entries = @entries.joins(:category).where(category: { category: params[:category] })
+    if params[:categories].present?
+      @entries = @entries.joins(:category).where(category: { category: params[:categories] })
     end
     if params[:question_day].present?
       @entries = @entries.where(question_day: true)

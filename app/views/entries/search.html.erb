@@ -8,14 +8,20 @@
           class: "form-control",
           placeholder: "Search by theme"
         %>
-        <%= check_box "", :category, {id: "category-prediction", checked: params[:category] == "Prediction" ? true : false}, 'Prediction', "" %>
+
+        <%= check_box_tag("categories[]", "Prediction" , params[:categories].present? && params[:categories].include?("Prediction") ? true : false) %>
         <label for="category-prediction"><span class="iconify" data-icon="fluent:predictions-20-regular"></span></label>
-        <%= check_box "", :category, {id: "category-event", checked: params[:category] == "Event" ? true : false}, 'Event', "" %>
+
+        <%= check_box_tag("categories[]", "Event", params[:categories].present? && params[:categories].include?("Event") ? true : false)%>
         <label for="category-event"><span class="iconify" data-icon="bx:party"></span></label>
-        <%= check_box "", :category, {id: "category-thought", checked: params[:category] == "Thought" ? true : false}, 'Thought', "" %>
+
+        <%= check_box_tag("categories[]", "Thought", params[:categories].present? && params[:categories].include?("Thought") ? true : false) %>
+
         <label for="category-thought"><span class="iconify" data-icon="fluent:thinking-24-regular"></span></label>
         <%= check_box("", :question_day, {checked: params[:question_day] == "true" ? true : false}, true, false) %>
         <label for="question_day"><span class="iconify" data-icon="fluent:calendar-question-mark-16-regular"></span></label>
+
+
       <% end %>
     </div>
     <% @entries.each do |entry| %>
