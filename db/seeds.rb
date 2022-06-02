@@ -13,12 +13,12 @@ puts 'Creating 10 fake users...'
   user.save!
   puts user.email
 end
-user = User.new(
+user1 = User.new(
   email: "test@mail.com",
   password: '123456'
 )
-user.save!
-puts user.email
+user1.save!
+puts user1.email
 puts 'Creating fake data...'
 category = Category.create(category: "Thought")
 category1 = Category.create(category: "Prediction")
@@ -30,6 +30,7 @@ category2 = Category.create(category: "Event")
     user: User.all.sample,
     theme: Faker::Book.title,
     comment: Faker::Lorem.paragraphs(number: 5).join(" "),
+    created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-02'),
     remember_date: Faker::Date.between(from: '2014-09-23', to: '2032-09-25'),
     question_day: rand(0..1)
   )
@@ -37,6 +38,36 @@ category2 = Category.create(category: "Event")
   p entry
 end
 puts 'Finished!'
+
+10.times do
+  entry = Entry.new(
+    category: Category.all.sample,
+    user: user1,
+    theme: Faker::Book.title,
+    comment: Faker::Lorem.paragraphs(number: 5).join(" "),
+    created_at: Faker::Date.between(from: '2022-05-31', to: '2022-06-02'),
+    remember_date: Faker::Date.between(from: '2014-09-23', to: '2032-09-25'),
+    question_day: rand(0..1)
+  )
+  entry.save!
+  p entry
+end
+
+10.times do
+  entry = Entry.new(
+    category: Category.all.sample,
+    user: user1,
+    theme: Faker::Book.title,
+    comment: Faker::Lorem.paragraphs(number: 5).join(" "),
+    created_at: Faker::Date.between(from: '2014-09-23', to: '2018-09-25'),
+    remember_date: Faker::Date.between(from: '2022-05-31', to: '2022-06-02'),
+    question_day: rand(0..1)
+  )
+  entry.save!
+  p entry
+end
+
+
 QuestionDay.destroy_all
 questions = ["Do you think houses will be more environmentally friendly in the future?",
              "Where will we get our energy when we run out of oil?",
