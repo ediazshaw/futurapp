@@ -1,12 +1,16 @@
-<%= render 'shared/navbar' %>
 
 
-
-
-<!--<% @entries.each do |entry| %>
-  <h3><%= entry.theme %></h3>
-  <p><%= entry.comment %></p>
-  <p><%= entry.remember_date %></p>
-  <p><%= entry.created_at %></p>
-  <%= link_to "Show", entry_path(entry) %>
+<h1>Hiding</h1>
+<% @date_entries.each do |date, entries| %>
+    <h2><%= date %></h2>
+  <% entries.each do |entry| %>
+    <p><%= entry.category_id %></p>
+    <p><%= entry.user_id %></p>
+    <p><%= current_user.email %></p>
+    <h3><%= entry.theme %></h3>
+    <p><%= entry.comment %></p>
+    <p><%= entry.remember_date %></p>
+    <p><%= entry.created_at %></p>
+    <% end %>
+  <%= link_to "Show", entry_path(date) %>
 <% end %>
