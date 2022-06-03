@@ -7,7 +7,7 @@ class Entry < ApplicationRecord
 
   include PgSearch::Model
   pg_search_scope :search,
-    against: [ :theme ],
+    against: [ :theme, :created_at, :remember_date ],
     using: {
       tsearch: { prefix: true }
     }
