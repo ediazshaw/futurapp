@@ -1,23 +1,37 @@
+<%= render 'shared/navbar_lateral' %>
 
+<!-- <h1>Hiding</h1>
+<div class="container-timeline">
+  <% @date_entries.each do |date, entries| %>
+      <h2><%= date %></h2>
+    <% entries.each do |entry| %>
+      <p><%= entry.category_id %></p>
+      <p><%= entry.user_id %></p>
+      <p><%= current_user.email %></p>
+      <h3><%= entry.theme %></h3>
+      <p><%= entry.comment %></p>
+      <p><%= entry.remember_date %></p>
+      <p><%= entry.created_at %></p>
+      <% end %>
+    <%= link_to "Show", entry_path(date) %>
+  <% end %>
+  <% date_with_content = [] %>
+  <% @date_entries.each do |date, entries| %>
+    <% date_with_content << date %>
+  <% end %>
+  <p><%= date_with_content %></p>
+</div>
 
-<h1>Hiding</h1>
-<% @date_entries.each do |date, entries| %>
-    <h2><%= date %></h2>
-  <% entries.each do |entry| %>
-    <p><%= entry.category_id %></p>
-    <p><%= entry.user_id %></p>
-    <p><%= current_user.email %></p>
-    <h3><%= entry.theme %></h3>
-    <p><%= entry.comment %></p>
-    <p><%= entry.remember_date %></p>
-    <p><%= entry.created_at %></p>
-    <% end %>
-  <%= link_to "Show", entry_path(date) %>
-<% end %>
+<% two_year = (1 .. 365).to_a %>
+<% today = Date.today %>
+<% show_date = today + 365 %>
+-->
 
-<div class="container-fluid blue-bg">
+<div class="container-fluid blue-bg container-timeline">
+  <% today_at = Date.today.strftime("%d-%b-%y") %>
+
+  <a href="#go-today" data-controller="scroll-to">Today</a>
   <div class="container">
-    <h2 class="pb-3 pt-2">Vertical Left-Right Timeline</h2>
     <!--first section-->
       <div class="row align-items-center how-it-works">
         <div class="col-2 text-center bottom">
@@ -28,7 +42,9 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor gravida aliquam. Morbi orci urna, iaculis in ligula et, posuere interdum lectus.</p>
         </div> %>
       </div>
-<% @date_entries.each_with_index do |(date, entries), index| %>
+    <% two_year.each do |day| %>
+      <% real_show_date = show_date %>
+      <% real_show_date_format = real_show_date.strftime("%d-%b-%y") %>
       <!--path between 1-2-->
       <div class="row timeline">
         <div class="col-2">
@@ -47,9 +63,37 @@
           <h5>Using Bootstrap</h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor gravida aliquam. Morbi orci urna, iaculis in ligula et, posuere interdum lectus.</p>
         </div> %>
-        <div class="col-2 text-center full">
-          <div class="circle"><%= date %></div>
-        </div>
+      <div class="col-2 text-center full">
+         <div class="circle">
+            <% real_show_date  %>
+            <%= real_show_date_format %>
+            <% if real_show_date_format == today_at%>
+              <div id="go-today">p</div>
+            <% end %>
+            <% date_with_content.each do |date| %>
+              <% if date == real_show_date_format %>
+                <%= link_to(entry_path(date)) do %>
+                <p><i class="fa-solid fa-arrows-to-circle"></i></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
+<!--     <%# <% show_date %> %>
+            <%# <%  real_show_date %> %>
+            <%# <% real_show_date_format %> %>
+            <%# <% date_with_content.each do |date| %> %>
+              <%# <% if date == real_show_date_format %> %>
+                <%# <h1 class="bg-success">helo</h1> %>
+                <%# <% is_there_content = "bg-success" %> %>
+                <%# <%= link_to(entry_path(date)) do %> %>
+                  <%# <div class="circle <%= is_there_content %>"> %>
+                    <%# <%= real_show_date_format %> %>
+                  <%# </div> %>
+                <%# <% end %> %>
+              <%# <% end %> %>
+            <%# <% end %> %>
+-->
+      </div>
       </div>
       <!--path between 2-3-->
       <div class="row timeline">
@@ -66,13 +110,29 @@
       <!--third section-->
       <div class="row align-items-center how-it-works">
         <div class="col-2 text-center top">
-          <div class="circle"><%= date %></div>
+          <div class="circle">
+            <% real_show_date = show_date - 1 %>
+            <% real_show_date  %>
+            <% real_show_date_format = real_show_date.strftime("%d-%b-%y") %>
+            <%= real_show_date_format %>
+            <% if real_show_date_format == today_at%>
+              <div id="go-today"></div>
+            <% end %>
+            <% date_with_content.each do |date| %>
+              <% if date == real_show_date_format %>
+                <%= link_to(entry_path(date)) do %>
+                <p><i class="fa-solid fa-arrows-to-circle"></i></p>
+                <% end %>
+              <% end %>
+            <% end %>
+          </div>
         </div>
         <%# <div class="col-6">
           <h5>Now with Pug and Sass</h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor gravida aliquam. Morbi orci urna, iaculis in ligula et, posuere interdum lectus.</p>
         </div> %>
       </div>
-<% end %>
+      <% show_date -= 2 %>
+    <% end %>
   </div>
 </div>

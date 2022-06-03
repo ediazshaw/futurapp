@@ -2,22 +2,21 @@ body {
   font: 100% "Lato", sans-serif;
   font-weight: 300;
   height: 100%;
-  background-color: #4D4545;
+  background-color: white;
 }
 
 .blue-bg {
-  background-color: #4D4545;
-  color: #ED8D8D;
+  background-color: white;
+  color: #D77B3E;
   height: 100%;
 }
 
 .circle {
   font-weight: bold;
-  padding: 15px 20px;
+  padding: 20px 20px;
   border-radius: 50%;
-  background-color: #ED8D8D;
-  color: #4D4545;
-  max-height: 50px;
+  background-color: #D77B3E;
+  color: white;
   z-index: 2;
 }
 
@@ -56,7 +55,7 @@ body {
   height: 40px;
 }
 .timeline hr {
-  border-top: 3px solid #ED8D8D;
+  border-top: 3px solid black;
   margin: 0;
   top: 17px;
   position: relative;
@@ -66,7 +65,7 @@ body {
   overflow: hidden;
 }
 .timeline .corner {
-  border: 3px solid #ED8D8D;
+  border: 3px solid #D77B3E;
   width: 100%;
   position: relative;
   border-radius: 15px;
@@ -87,3 +86,12 @@ body {
   left: 50%;
   top: calc(50% - 3px);
 }
+
+.container-timeline{
+  padding: 20px 100px 20px 200px;
+}
+
+.fa-arrows-to-circle{
+  color: white;
+  font-size: 40px;
+  }
