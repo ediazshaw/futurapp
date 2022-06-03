@@ -1,3 +1,8 @@
+.form-control {
+  display: flex;
+  flex-direction: row;
+}
+
 .search-icons {
   display: flex;
   flex-direction: row;
@@ -6,3 +11,8 @@
   font-size: 75px;
   color: #D5B78A;
 }
+// .search-bar {
+//   display: flex;
+//   flex-direction: row;
+//   justify-content: space-between;
+// }
