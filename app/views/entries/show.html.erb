@@ -1,67 +1,83 @@
-<h1>This shows date through cat ent</h1>
+<h1>Show Card</h1>
 
+
+  <div class="show-inline-flex d-flex" data-controller="show-card">
     <div class="card-category-show-card">
-      <div class="card-category__show-topic">
-        <p class="card-show-question-title">Events</p>
-        <div class="card-category__show-img">
-          <%= image_tag 'event.jpg' %>
+      <% @category_entries.each do |category, entries| %>
+        <% card_title = category.class == Integer ? Category.find(category).category : category = "Predicted" %>
+        <div class="card-category__show-topic <%= card_title == "Thought" ? "" : "d-none" %>" data-show-card-target="topic" data-category="<%= card_title %>">
+          <p class="card-show-question-title"><%= card_title %></p>
+          <div class="card-category__show-img">
+            <%= image_tag "category/#{card_title.downcase}.jpg" %>
+          </div>
+          <div class="card-category__questions">
+            <% case card_title %>
+            <% when "Predicted" %>
+              <p>Did your prediction for today come true? Time to brag about it...</p>
+            <% when "Thought" %>
+              <p>What is on your mind? Tell us how you feel today...</p>
+            <% when "Event" %>
+              <p>Did something big happen today? Tell us about your event...</p>
+            <% when "Prediction" %>
+              <p>Can you predict the future? Tell us your most wild predictions...</p>
+            <% when "question_of_the_day" %>
+              <p>How and when do you think humans will land on Mars?</p>
+            <% end %>
+          </div>
         </div>
-        <div class="card-category__questions">
-          <p>Did something big happen today? Tell us about your event...</p>
-        </div>
-      </div>
+      <% end %>
       <div class="card-category__show">
         <div class="category-day-inline">
-          <div class="card-text-categories-style">
+          <div class="card-text-categories-style" data-action="click->show-card#toggleCard" data-show-card-category-param="question_of_the_day"	>
             <p class="hover-line-style">Question of the day</p>
           </div>
-          <div class="card-text-categories-style">
+          <div class="card-text-categories-style" data-action="click->show-card#toggleCard" data-show-card-category-param="Prediction">
             <p><%= params[:id] %></p>
             <p class="hover-line-style">Predictions</p>
           </div>
-          <div class="card-text-categories-style">
+          <div class="card-text-categories-style" data-action="click->show-card#toggleCard" data-show-card-category-param="Thought">
             <p><%= params[:id] %></p>
             <p class="hover-line-style">Thoughts</p>
           </div>
-          <div class="card-text-categories-style">
+          <div class="card-text-categories-style" data-action="click->show-card#toggleCard" data-show-card-category-param="Event">
             <p><%= params[:id] %></p>
             <p class="hover-line-style">Events</p>
           </div>
-          <div class="card-text-categories-style">
+          <div class="card-text-categories-style" data-action="click->show-card#toggleCard" data-show-card-category-param="Predicted">
             <p><%= params[:id] %></p>
             <p class="hover-line-style">Predicted</p>
           </div>
         </div>
-        <hr>
 
-<% @category_entries.each do |category, entries| %>
-  <div class="show-inline-flex d-flex">
-  <h1><%= category %></h1>
-    <% entries.each do |entry| %>
-    <div>
-      <div>
-        <p class="card-text-titles-style">Theme</p>
-        <p class="response-text-user response-text-user-margin"><%= entry.theme %></p>
-      </div>
-      <div>
-          <div class="margin-dates-show d-flex">
-            <div>
-              <p class="card-text-dates-style"><i class="fa-solid fa-pen-to-square"></i>&nbsp&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p>
-              <p class="card-text-dates-style"><i class="fa-solid fa-calendar-check"></i>&nbsp&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+        <% @category_entries.each do |category, entries| %>
+          <% card_title = category.class == Integer ? Category.find(category).category : category = "Predicted" %>
+        <div class="<%= card_title == "Thought" ? "" : "d-none" %>" data-category="<%= card_title %>" data-show-card-target="entry" >
+          <% entries.each do |entry| %>
+            <div class="show-inline-flex d-flex">
+              <div>
+                <p class="card-text-titles-style">Theme</p>
+                <p class="response-text-user response-text-user-margin"><%= entry.theme %></p>
+              </div>
+              <div>
+                <div class="margin-dates-show d-flex">
+                  <div>
+                    <p class="card-text-dates-style"><i class="fa-solid fa-pen-to-square"></i>&nbsp&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p>
+                    <p class="card-text-dates-style"><i class="fa-solid fa-calendar-check"></i>&nbsp&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+                  </div>
+                  <div class="response-icon-share">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </div>
+                </div>
+              </div>
             </div>
-            <div class="response-icon-share">
-              <i class="fa-solid fa-share-nodes"></i>
-            </div>
-          </div>
+            <hr>
+          <% end %>
+        </div>
+      <% end %>
+      <%= link_to new_entry_path do %>
+        <button class="card-button-add-show button-text">Add new</button>
+      <% end %>
       </div>
-    </div>
       <hr>
+    </div>
   </div>
-    <% end %>
-  </div>
-<% end %>
-
-            <%# <button class="card-button-show button-text"> Share</button> %>
-            <%= link_to new_entry_path do %>
-              <button class="card-button-add-show button-text">Add new</button>
-            <% end %>
