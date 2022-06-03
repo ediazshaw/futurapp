@@ -1,0 +1,24 @@
+
+[1mFrom:[0m /home/joana/code/joana91/futurapp/app/controllers/entries_controller.rb:33 EntriesController#search:
+
+    [1;34m20[0m: [32mdef[0m [1;34msearch[0m
+    [1;34m21[0m:   @categories = [1;34;4mCategory[0m.all
+    [1;34m22[0m:   @entries = current_user.entries
+    [1;34m23[0m:   [32mif[0m params[[33m:query[0m].present?
+    [1;34m24[0m:     @entries = @entries.search(params[[33m:query[0m])
+    [1;34m25[0m:   [32mend[0m
+    [1;34m26[0m:   [32mif[0m params[[33m:category[0m].present?
+    [1;34m27[0m:     @entries = @entries.joins([33m:category[0m).where([35mcategory[0m: { [35mcategory[0m: params[[33m:category[0m] })
+    [1;34m28[0m:   [32mend[0m
+    [1;34m29[0m:   [32mif[0m params[[33m:question_day[0m].present?
+    [1;34m30[0m:     @entries = @entries.where([35mquestion_day[0m: [1;36mtrue[0m)
+    [1;34m31[0m:     binding.pry
+    [1;34m32[0m:   [32mend[0m
+ => [1;34m33[0m:   [32mif[0m params[[33m:search_date[0m].present?
+    [1;34m34[0m:     @entries = @entries.where([35mcreated_at[0m: params[[33m:search_date[0m])
+    [1;34m35[0m:   [32mend[0m
+    [1;34m36[0m:   [32mif[0m params[[33m:remember_date[0m].present?
+    [1;34m37[0m:     @entries = @entries.where([35mremember_date[0m: params[[33m:remember_date[0m])
+    [1;34m38[0m:   [32mend[0m
+    [1;34m39[0m: [32mend[0m
+
