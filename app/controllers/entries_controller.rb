@@ -34,7 +34,7 @@ class EntriesController < ApplicationController
       @entries = @entries.where(question_day: true)
     end
     if params[:start_date].present? && params[:end_date].present?
-      @entries = @entries.where(created_at: params[:start_date]..params[:end_date]).or(@entries.where(remember_date: params[:start_date]))
+      @entries = @entries.where(created_at: params[:start_date]..params[:end_date]).or(@entries.where(remember_date: params[:start_date]..params[:end_date]))
     end
   end
 

@@ -19,7 +19,8 @@
           <label for="category-thought"><span class="iconify" data-icon="fluent:thinking-24-regular"></span></label>
           <%= check_box("", :question_day, {checked: params[:question_day] == "true" ? true : false, onchange: 'this.form.submit()'}, true, false) %>
           <label for="question_day"><span class="iconify" data-icon="fluent:calendar-question-mark-16-regular"></span></label>
-          <!--<input type="text" name="start_date" value="<%= params[:start_date] %>" onchange='this.form.submit()'>-->
+          <input type="text" name="start_date" value="<%= params[:start_date] %>" onchange='this.form.submit()' class= "datepicker" id="search_date">
+          <label for="search_date"><span class="iconify" data-icon="fluent:calendar-question-mark-16-regular"></span></label>
         </div>
       <% end %>
     </div>
