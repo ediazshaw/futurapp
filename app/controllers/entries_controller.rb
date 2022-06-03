@@ -22,12 +22,25 @@ class EntriesController < ApplicationController
   end
 
   def search
-    @entries = Entry.all
+    @categories = Category.all
+    @entries = current_user.entries
+    if params[:query].present?
+      @entries = @entries.search(params[:query])
+    end
+    if params[:categories].present?
+      @entries = @entries.joins(:category).where(category: { category: params[:categories] })
+    end
+    if params[:question_day].present?
+      @entries = @entries.where(question_day: true)
+    end
+    if params[:start_date].present? && params[:end_date].present?
+      @entries = @entries.where(created_at: params[:start_date]..params[:end_date]).or(@entries.where(remember_date: params[:start_date]))
+    end
   end
 
   def show
     @category_entries = current_user.entries.where(created_at:(Date.parse(params[:id]).beginning_of_day..Date.parse(params[:id]).end_of_day)).group_by(&:category_id)
-    @category_entries[:predicted_entries] = current_user.entries.where(remember_date:(Date.parse(params[:id]).beginning_of_day..Date.parse(params[:id]).end_of_day))
+    @category_entries[:predicted_entries] = current_user.entries.where(remember_date: (Date.parse(params[:id]).beginning_of_day..Date.parse(params[:id]).end_of_day))
   end
 
   private
