@@ -12,16 +12,18 @@
         </div>
         <div class="search-icons">
           <%= check_box_tag("categories[]", "Prediction" , params[:categories].present? && params[:categories].include?("Prediction") ? true : false, onchange: 'this.form.submit()', id: "category-prediction") %>
-          <label for="category-prediction"><span class="iconify" data-icon="fluent:predictions-20-regular"></span></label>
+          <label for="category-prediction">Predictions</label>
           <%= check_box_tag("categories[]", "Event", params[:categories].present? && params[:categories].include?("Event") ? true : false, onchange: 'this.form.submit()', id: "category-event")%>
-          <label for="category-event"><span class="iconify" data-icon="bx:party"></span></label>
+          <label for="category-event">Events</label>
           <%= check_box_tag("categories[]", "Thought", params[:categories].present? && params[:categories].include?("Thought") ? true : false, onchange: 'this.form.submit()', id: "category-thought") %>
-          <label for="category-thought"><span class="iconify" data-icon="fluent:thinking-24-regular"></span></label>
-          <%= check_box("", :question_day, {checked: params[:question_day] == "true" ? true : false, onchange: 'this.form.submit()'}, true, false) %>
-          <label for="question_day"><span class="iconify" data-icon="fluent:calendar-question-mark-16-regular"></span></label>
-          <input type="text" name="start_date" value="<%= params[:start_date] %>" onchange='this.form.submit()' class= "datepicker" id="search_date">
-          <label for="search_date"><span class="iconify" data-icon="fluent:calendar-question-mark-16-regular"></span></label>
+          <label for="category-thought">Thoughts</label>
+          <%= check_box("", :question_day, {checked: params[:question_day] == "true" ? true : false, onchange: 'this.form.submit()', id: "question_day_search"}, true, false) %>
+          <label for="question_day">Questions day</label>
+          <input name="start_date" value="<%= params[:start_date] %>" onchange='this.form.submit()' class= "datepicker" id="search_date" label="Initial date" placeholder="Initial date">
+          <input name="end_date" value="<%= params[:end_date] %>" onchange='this.form.submit()' class= "datepicker" id="search_date" label="Final date" placeholder="Final date">
         </div>
+        <input type="submit" hidden />
+
       <% end %>
     </div>
     <% @entries.each do |entry| %>
