@@ -1,5 +1,6 @@
 <%= render 'shared/navbar_lateral' %>
 
+
 <!-- <h1>Hiding</h1>
 <div class="container-timeline">
   <% @date_entries.each do |date, entries| %>
@@ -26,16 +27,23 @@
 <% today = Date.today %>
 <% show_date = today + 365 %>
 -->
-
-<div class="container-fluid blue-bg container-timeline">
-  <% today_at = Date.today.strftime("%d-%b-%y") %>
-
-  <a href="#go-today" data-controller="scroll-to">Today</a>
+<div class="container-fluid blue-bg container-timeline bg-dark">
+  <% date_with_content = [] %>
+  <% @date_entries.each do |date, entries| %>
+    <% date_with_content << date %>
+    <% entries.each do |entry| %>
+      <% date_with_content << entry.remember_date.strftime("%d-%b-%y") %>
+      <% end %>
+  <% end %>
+  <p><% date_with_content %></p>
+  <%# We sum + 1 so that it when it scrolls it leaves the date we want in the center of the screen and not at the top %>
+  <% today_at = (Date.today + 1).strftime("%d-%b-%y") %>
+  <%# <a href="#go-today" data-controller="scroll-to">Today</a> %>
   <div class="container">
     <!--first section-->
       <div class="row align-items-center how-it-works">
         <div class="col-2 text-center bottom">
-          <div class="circle">Future</div>
+          <div><%= (Date.today + 366).strftime("%d-%b-%y") %></div>
         </div>
         <%# <div class="col-6">
           <h5>Fully Responsive</h5>
@@ -64,35 +72,25 @@
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor gravida aliquam. Morbi orci urna, iaculis in ligula et, posuere interdum lectus.</p>
         </div> %>
       <div class="col-2 text-center full">
-         <div class="circle">
-            <% real_show_date  %>
-            <%= real_show_date_format %>
-            <% if real_show_date_format == today_at%>
-              <div id="go-today">p</div>
-            <% end %>
-            <% date_with_content.each do |date| %>
-              <% if date == real_show_date_format %>
-                <%= link_to(entry_path(date)) do %>
-                <p><i class="fa-solid fa-arrows-to-circle"></i></p>
-                <% end %>
-              <% end %>
-            <% end %>
+        <% real_show_date  %>
+        <% real_show_date_format %>
+        <% if real_show_date_format == today_at%>
+              <div id="go-today" data-controller="load" data-action="load@window->load#scrollLoad"></div>
+        <% end %>
+        <% is_there_content = "" %>
+        <% date_with_content.each do |date| %>
+          <% if date == real_show_date_format %>
+            <% is_there_content = "bg-secondary" %>
+            <% break %>
+          <% else %>
+            <% next %>
+          <% end %>
+        <% end %>
+        <%= link_to(entry_path(real_show_date_format)) do %>
+          <div class="circle <%= is_there_content %>">
+              <%= real_show_date_format %>
           </div>
-<!--     <%# <% show_date %> %>
-            <%# <%  real_show_date %> %>
-            <%# <% real_show_date_format %> %>
-            <%# <% date_with_content.each do |date| %> %>
-              <%# <% if date == real_show_date_format %> %>
-                <%# <h1 class="bg-success">helo</h1> %>
-                <%# <% is_there_content = "bg-success" %> %>
-                <%# <%= link_to(entry_path(date)) do %> %>
-                  <%# <div class="circle <%= is_there_content %>"> %>
-                    <%# <%= real_show_date_format %> %>
-                  <%# </div> %>
-                <%# <% end %> %>
-              <%# <% end %> %>
-            <%# <% end %> %>
--->
+        <% end %>
       </div>
       </div>
       <!--path between 2-3-->
@@ -110,28 +108,31 @@
       <!--third section-->
       <div class="row align-items-center how-it-works">
         <div class="col-2 text-center top">
-          <div class="circle">
-            <% real_show_date = show_date - 1 %>
-            <% real_show_date  %>
-            <% real_show_date_format = real_show_date.strftime("%d-%b-%y") %>
-            <%= real_show_date_format %>
-            <% if real_show_date_format == today_at%>
-              <div id="go-today"></div>
-            <% end %>
-            <% date_with_content.each do |date| %>
-              <% if date == real_show_date_format %>
-                <%= link_to(entry_path(date)) do %>
-                <p><i class="fa-solid fa-arrows-to-circle"></i></p>
-                <% end %>
-              <% end %>
-            <% end %>
+          <% real_show_date = show_date - 1 %>
+        <% real_show_date_format = real_show_date.strftime("%d-%b-%y")%>
+        <% if real_show_date_format == today_at%>
+              <div id="go-today" data-controller="load" data-action="load@window->load#scrollLoad"></div>
+        <% end %>
+        <% is_there_content = "" %>
+        <% date_with_content.each do |date| %>
+          <% if date == real_show_date_format %>
+            <% is_there_content = "bg-secondary" %>
+            <% break %>
+          <% else %>
+            <% next %>
+          <% end %>
+        <% end %>
+        <%= link_to(entry_path(real_show_date_format)) do %>
+          <div class="circle <%= is_there_content %>">
+              <%= real_show_date_format %>
           </div>
+        <% end %>
+        </div>
         </div>
         <%# <div class="col-6">
           <h5>Now with Pug and Sass</h5>
           <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor gravida aliquam. Morbi orci urna, iaculis in ligula et, posuere interdum lectus.</p>
         </div> %>
-      </div>
       <% show_date -= 2 %>
     <% end %>
   </div>
