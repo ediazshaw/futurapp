@@ -75,12 +75,12 @@
         <% real_show_date  %>
         <% real_show_date_format %>
         <% if real_show_date_format == today_at%>
-              <div id="go-today" data-controller="load" data-action="load@window->load#scrollLoad"></div>
+              <div id="go-today"></div>
         <% end %>
         <% is_there_content = "" %>
         <% date_with_content.each do |date| %>
           <% if date == real_show_date_format %>
-            <% is_there_content = "bg-secondary" %>
+            <% is_there_content = "rotate" %>
             <% break %>
           <% else %>
             <% next %>
@@ -111,12 +111,12 @@
           <% real_show_date = show_date - 1 %>
         <% real_show_date_format = real_show_date.strftime("%d-%b-%y")%>
         <% if real_show_date_format == today_at%>
-              <div id="go-today" data-controller="load" data-action="load@window->load#scrollLoad"></div>
+              <div id="go-today"></div>
         <% end %>
         <% is_there_content = "" %>
         <% date_with_content.each do |date| %>
           <% if date == real_show_date_format %>
-            <% is_there_content = "bg-secondary" %>
+            <% is_there_content = "rotate" %>
             <% break %>
           <% else %>
             <% next %>

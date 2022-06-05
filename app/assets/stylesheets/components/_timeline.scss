@@ -25,10 +25,11 @@ body {
   justify-content: center;
   background-image: url("logo.png");
   background-size: cover;
-  animation: rotation 40s infinite linear;
 }
 
-
+.rotate{
+  animation: rotation 10s infinite linear;
+}
 
 .how-it-works.row {
   display: flex;

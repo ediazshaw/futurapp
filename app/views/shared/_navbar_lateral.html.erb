@@ -1,26 +1,26 @@
 <div class="d-flex flex-column lateral-navbar min-vh-100" style="width: 4.5rem;">
-    <a href="<%= root_path %>" class="link-dark text-decoration-none" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
+    <a href="<%= root_path %>" class="link-dark text-decoration-none" title="Go to the Homepage" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Icon-only">
       <%= image_tag "orangefuturapp_white.png", alt: "Logo", class: "menu-icons" %>
       <span class="visually-hidden">Icon-only</span>
     </a>
       <div class="nav-item">
-        <a href="<%= entries_path %>" class="nav-link py-3" aria-current="page" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
+        <a href="<%= entries_path %>#go-today" class="nav-link py-3" aria-current="page" title="Go to your Timeline" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Home">
           <i class="fa-solid fa-timeline menu-icons icons"></i>
         </a>
       </div>
       <div>
-        <a href="<%= search_path %>" class="nav-link py-3" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
+        <a href="<%= search_path %>" class="nav-link py-3" title="Find your Timecapsules" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Dashboard">
           <i class="fa-solid fa-magnifying-glass menu-icons icons"></i>
         </a>
       </div>
       <div>
-        <a href="#go-today" class="nav-link py-3" title="" data-controller="scroll-to" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
+        <a href="<%= entries_path %>#go-today" class="nav-link py-3" title="Open Today's Timecapsule" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Orders">
           <span class="iconify menu-icons icons" data-icon="mdi:timeline-text-outline"></span>
           <%#= image_tag "today_icon.png", alt: "Today card", class: "menu-icons icons" %>
         </a>
       </div>
       <div>
-        <a href="<%= new_entry_path %>" class="nav-link py-3" title="" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
+        <a href="<%= new_entry_path %>" class="nav-link py-3" title="Write a New Entry" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
           <i class="fa-solid fa-circle-plus menu-icons icons"></i>
         </a>
       </div>
