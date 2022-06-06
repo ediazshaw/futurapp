@@ -46,9 +46,31 @@
         </div>
         <div class="comment-share d-flex">
           <div class="comment-search" title="Comment"><%= entry.comment %></div>
-          <div class="share-search" title="Share"><i class="fa-solid fa-share-nodes"></i></div>
+            <!-- Button trigger modal -->
+            <button type="button" class="share-search button-share" data-bs-toggle="modal" data-bs-target="#exampleModal<%= entry.id %>">
+              <div class="share-search" title="Share"><i class="fa-solid fa-share-nodes"></i></div>
+            </button>
         </div>
       </div>
+      <!-- Modal -->
+<div class="modal fade" id="exampleModal<%= entry.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="exampleModalLabel">Copy this text for sharing</h5>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <p><%= entry.comment %></p>
+        <p>Creation Date: <%= entry.created_at.strftime("%d-%b-%Y") %></p>
+        <p>Predicted Date: <%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+        <p>#Futurapp #<%= entry.theme.gsub(/\s+/, '') %> #<%= entry.theme.gsub(/\s+/, '') %>Futurapp</p>
+      </div>
+      <div class="modal-footer">
+      </div>
+    </div>
+  </div>
+</div>
     <% end %>
   </div>
 </div>
