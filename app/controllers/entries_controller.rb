@@ -45,6 +45,6 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:theme, :comment, :remember_date, :question_day, :created_at, :photo, :category_id)
+    params.require(:entry).permit(:theme, :comment, :remember_date, :question_day, :created_at, :category_id, photos: [])
   end
 end
