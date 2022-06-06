@@ -27,7 +27,7 @@
 <% today = Date.today %>
 <% show_date = today + 365 %>
 -->
-<div class="container-fluid blue-bg container-timeline bg-dark">
+<div class="container-fluid blue-bg container-timeline bg-dark" data-controller="modal-entry">
   <% date_with_content = [] %>
   <% @date_entries.each do |date, entries| %>
     <% date_with_content << date %>
@@ -38,17 +38,12 @@
   <p><% date_with_content %></p>
   <%# We sum + 1 so that it when it scrolls it leaves the date we want in the center of the screen and not at the top %>
   <% today_at = (Date.today + 1).strftime("%d-%b-%y") %>
-  <%# <a href="#go-today" data-controller="scroll-to">Today</a> %>
   <div class="container">
     <!--first section-->
       <div class="row align-items-center how-it-works">
         <div class="col-2 text-center bottom">
           <div><%= (Date.today + 366).strftime("%d-%b-%y") %></div>
         </div>
-        <%# <div class="col-6">
-          <h5>Fully Responsive</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor gravida aliquam. Morbi orci urna, iaculis in ligula et, posuere interdum lectus.</p>
-        </div> %>
       </div>
     <% two_year.each do |day| %>
       <% real_show_date = show_date %>
@@ -67,31 +62,25 @@
       </div>
       <!--second section-->
       <div class="row align-items-center justify-content-end how-it-works">
-        <%# <div class="col-6 text-right">
-          <h5>Using Bootstrap</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor gravida aliquam. Morbi orci urna, iaculis in ligula et, posuere interdum lectus.</p>
-        </div> %>
-      <div class="col-2 text-center full">
-        <% real_show_date  %>
-        <% real_show_date_format %>
-        <% if real_show_date_format == today_at%>
-              <div id="go-today"></div>
-        <% end %>
-        <% is_there_content = "" %>
-        <% date_with_content.each do |date| %>
-          <% if date == real_show_date_format %>
-            <% is_there_content = "rotate" %>
-            <% break %>
-          <% else %>
-            <% next %>
+        <div class="col-2 text-center full">
+          <% real_show_date  %>
+          <% real_show_date_format %>
+          <% if real_show_date_format == today_at%>
+                <div id="go-today"></div>
           <% end %>
-        <% end %>
-        <%= link_to(entry_path(real_show_date_format)) do %>
-          <div class="circle <%= is_there_content %>">
-              <%= real_show_date_format %>
-          </div>
-        <% end %>
-      </div>
+          <% is_there_content = "" %>
+          <% date_with_content.each do |date| %>
+            <% if date == real_show_date_format %>
+              <% is_there_content = "rotate" %>
+              <% break %>
+            <% else %>
+              <% next %>
+            <% end %>
+          <% end %>
+          <a href="<%= entry_path(real_show_date_format) %>" class="circle  <%= is_there_content %>" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" data-action="click->modal-entry#getContent">
+            <%= real_show_date_format %>
+          </a>
+        </div>
       </div>
       <!--path between 2-3-->
       <div class="row timeline">
@@ -109,31 +98,36 @@
       <div class="row align-items-center how-it-works">
         <div class="col-2 text-center top">
           <% real_show_date = show_date - 1 %>
-        <% real_show_date_format = real_show_date.strftime("%d-%b-%y")%>
-        <% if real_show_date_format == today_at%>
-              <div id="go-today"></div>
-        <% end %>
-        <% is_there_content = "" %>
-        <% date_with_content.each do |date| %>
-          <% if date == real_show_date_format %>
-            <% is_there_content = "rotate" %>
-            <% break %>
-          <% else %>
-            <% next %>
+          <% real_show_date_format = real_show_date.strftime("%d-%b-%y")%>
+          <% if real_show_date_format == today_at%>
+                <div id="go-today"></div>
           <% end %>
-        <% end %>
-        <%= link_to(entry_path(real_show_date_format)) do %>
-          <div class="circle <%= is_there_content %>">
+          <% is_there_content = "" %>
+          <% date_with_content.each do |date| %>
+            <% if date == real_show_date_format %>
+              <% is_there_content = "rotate" %>
+              <% break %>
+            <% else %>
+              <% next %>
+            <% end %>
+          <% end %>
+          <a href="<%= entry_path(real_show_date_format) %>" class="circle  <%= is_there_content %>" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" data-action="click->modal-entry#getContent">
               <%= real_show_date_format %>
-          </div>
-        <% end %>
+          </a>
         </div>
-        </div>
-        <%# <div class="col-6">
-          <h5>Now with Pug and Sass</h5>
-          <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed porttitor gravida aliquam. Morbi orci urna, iaculis in ligula et, posuere interdum lectus.</p>
-        </div> %>
+      </div>
       <% show_date -= 2 %>
     <% end %>
+  </div>
+
+  <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button type="button" class="btn-close modal-close-button" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body" data-modal-entry-target="modal">
+          ...
+        </div>
+      </div>
+    </div>
   </div>
 </div>

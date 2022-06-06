@@ -1,0 +1,32 @@
+<div class="card-category-new-form" data-controller="entry-card">
+  <div class="card-category__topic" data-entry-card-target="card" data-id="<%=Category.third.id %>">
+      <p class="card-question-title">Events</p>
+    <div class="card-category__img">
+      <%= image_tag 'event.jpg' %>
+    </div>
+    <div class="card-category__questions">
+      <p>Did something big happen today? Tell us about your event...</p>
+    </div>
+  </div>
+  <div class="card-category__topic d-none" data-entry-card-target="card" data-id="<%=Category.first.id %>">
+      <p class="card-question-title">Thoughts</p>
+    <div class="card-category__img">
+      <%= image_tag 'thought.jpg' %>
+    </div>
+    <div class="card-category__questions">
+      <p>What is on your mind? Tell us how you feel today...</p>
+    </div>
+  </div>
+  <div class="card-category__topic d-none" data-entry-card-target="card" data-id="<%=Category.second.id %>">
+      <p class="card-question-title">Predictions</p>
+    <div class="card-category__img">
+      <%= image_tag 'predictions.jpg' %>
+    </div>
+    <div class="card-category__questions">
+      <p>Can you predict the future? Tell us your most wild predictions...</p>
+    </div>
+  </div>
+  <div class="card-category__form">
+    <%= render 'entries/form', entry: @entry || Entry.new %>
+  </div>
+</div>
