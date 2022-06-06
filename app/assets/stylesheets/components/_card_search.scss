@@ -18,6 +18,7 @@
   border-radius: 5px;
   margin: 20px 10px 60px 10px;
   font-family: Nunito;
+  width: 100%;
 }
 
 .date-search{
@@ -31,10 +32,39 @@
 
 .comment-share{
   align-items: end;
+  justify-content: space-between;
 }
 
 .share-search{
   color: #D5B78A;
   font-size:30px;
-  padding-right: 20px;
+  padding-right: 10px;
+}
+
+.search-icons{
+justify-content: end;
+}
+
+#search-date.datepicker{
+  margin-left: 15px;
+  margin-right: 0;
+}
+
+.two-button{
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-text{
+  text-align: center;
+}
+
+.images-search{
+  display: flex;
+  justify-content: start;
+  margin: 10px;
+}
+
+.images-search img{
+  margin-right: 10px;
 }
