@@ -1,28 +1,33 @@
 <%= render 'shared/navbar_lateral' %>
 <div class="page-container">
   <div class="content-container">
-    <div class="search-bar">
-      <%= form_tag search_path, method: :get do %>
+
+      <%= form_tag search_path, class: "search-bar", method: :get do %>
         <div class="search-theme">
           <%= text_field_tag :query,
             params[:query],
-            class: "form-control",
+            class: "form-control-search",
             placeholder: "Search by theme"
           %>
         </div>
-        <div class="search-icons">
-          <%= check_box_tag("categories[]", "Prediction" , params[:categories].present? && params[:categories].include?("Prediction") ? true : false, onchange: 'this.form.submit()', id: "category-prediction") %>
-          <label for="category-prediction" title="Predictions"><span class="iconify " data-icon="fluent:predictions-20-regular"></span></label>
-          <%= check_box_tag("categories[]", "Event", params[:categories].present? && params[:categories].include?("Event") ? true : false, onchange: 'this.form.submit()', id: "category-event")%>
-          <label for="category-event" title="Events"><span class="iconify" data-icon="bx:party"></span></label>
-          <%= check_box_tag("categories[]", "Thought", params[:categories].present? && params[:categories].include?("Thought") ? true : false, onchange: 'this.form.submit()', id: "category-thought") %>
-          <label for="category-thought" title="Thoughts"><span class="iconify" data-icon="fluent:thinking-24-regular"></span></label>
-          <%= check_box("", :question_day, {checked: params[:question_day] == "true" ? true : false, onchange: 'this.form.submit()'}, true, false) %>
-          <label for="question_day" title="Questions of the Day"><span class="iconify" data-icon="fluent:calendar-question-mark-16-regular"></span></label>
-          <!--<input type="text" name="start_date" value="<%= params[:start_date] %>" onchange='this.form.submit()'>-->
+        <div class="search-options">
+          <div class="search-icons">
+            <%= check_box_tag("categories[]", "Prediction" , params[:categories].present? && params[:categories].include?("Prediction") ? true : false, onchange: 'this.form.submit()', id: "category-prediction", class: "opacity-0") %>
+            <label for="category-prediction" title="Predictions"><span class="iconify" data-icon="fluent:predictions-20-regular"></span></label>
+            <%= check_box_tag("categories[]", "Event", params[:categories].present? && params[:categories].include?("Event") ? true : false, onchange: 'this.form.submit()', id: "category-event", class: "opacity-0")%>
+            <label for="category-event" title="Events"><span class="iconify" data-icon="bx:party"></span></label>
+            <%= check_box_tag("categories[]", "Thought", params[:categories].present? && params[:categories].include?("Thought") ? true : false, onchange: 'this.form.submit()', id: "category-thought", class: "opacity-0") %>
+            <label for="category-thought" title="Thoughts"><span class="iconify" data-icon="fluent:thinking-24-regular"></span></label>
+            <%= check_box("", :question_day, {checked: params[:question_day] == "true" ? true : false, onchange: 'this.form.submit()', id: "question_day_search", class: "opacity-0"}, true, false) %>
+            <label for="question_day_search" title="Questions of the Day"><span class="iconify" data-icon="fluent:calendar-question-mark-16-regular"></span></label>
+          </div>
+          <div class="search-date-bar">
+            <input name="start_date" value="<%= params[:start_date] %>" onchange='this.form.submit()' class= "datepicker" id="search-date" label="Initial date" placeholder="Initial date">
+            <input name="end_date" value="<%= params[:end_date] %>" onchange='this.form.submit()' class= "datepicker" id="search-date" label="Final date" placeholder="Final date">
+          </div>
         </div>
+          <input type="submit" hidden />
       <% end %>
-    </div>
     <% @entries.each do |entry| %>
       <div class="card-search">
         <div class="title-date d-flex">
