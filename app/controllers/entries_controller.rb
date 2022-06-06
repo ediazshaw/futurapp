@@ -42,6 +42,17 @@ class EntriesController < ApplicationController
     @category_entries[:predicted_entries] = current_user.entries.where(remember_date: (Date.parse(params[:id]).beginning_of_day..Date.parse(params[:id]).end_of_day))
   end
 
+  def forum
+    @entries = Entry.all
+  end
+
+  def forum_show
+    # @theme = Entry.find(params[:theme])
+    @entries = Entry.all
+    @review = Review.new
+    @entry = Entry.find(params[:entry])
+  end
+
   private
 
   def entry_params

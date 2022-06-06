@@ -1,0 +1,6 @@
+<h1>Forum</h1>
+
+<% @entries.each do |entry| %>
+  <h4><%= entry.theme %></h4>
+  <p><%= link_to "Enter forum", forum_theme_path(entry.theme) %></p>
+<% end %>
