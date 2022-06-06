@@ -18,7 +18,7 @@
   border-radius: 5px;
   margin: 20px 10px 60px 10px;
   font-family: Nunito;
-  width: 90%;
+  width: 100%;
 }
 
 .date-search{
@@ -39,4 +39,22 @@
   color: #D5B78A;
   font-size:30px;
   padding-right: 20px;
+}
+
+.search-icons{
+justify-content: end;
+}
+
+#search-date.datepicker{
+  margin-left: 15px;
+  margin-right: 0;
+}
+
+.two-button{
+  display: flex;
+  justify-content: space-between;
+}
+
+.button-text{
+  text-align: center;
 }

@@ -8,5 +8,8 @@
   <%= f.input :theme %>
   <%= f.input :remember_date, label: "Predict the date", as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "Pick a date here" %>
   <%= f.input :comment, placeholder: 'Type your answer here...', label: false %>
-  <%= f.submit "Submit" , class: "card-button-form button-text"%>
+  <div class="two-button">
+    <%= f.submit "Submit" , class: "card-button-form button-text"%>
+    <a href="<%= entries_path %>#go-today" class="card-button-form button-text">Skip</a>
+  </div>
 <% end %>
