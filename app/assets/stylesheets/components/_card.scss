@@ -244,6 +244,17 @@
   vertical-align: Top;
 }
 
+.card-text-dates-style {
+  font-family: Nunito;
+  font-style: Bold;
+  font-size: 12px;
+  line-height: 16px;
+  line-height: 100%;
+  align-items: Left;
+  vertical-align: Top;
+  margin-right: 10px;
+}
+
 .card-text-categories-style {
   font-family: Nunito;
   font-style: Light;
@@ -287,6 +298,11 @@
   padding-right: 50px;
 }
 
+.show-inline-flex {
+  display: flex;
+  justify-content: space-between;
+}
+
 .category-day-inline {
   display: flex;
   justify-content: space-around;
@@ -295,4 +311,16 @@
 hr {
   margin-top: 5px;
   margin-bottom: 5px;
+}
+
+.margin-dates-show {
+  margin-right: 10px;
+}
+
+.response-text-user-margin {
+  margin-left: 10px;
+}
+
+.response-icon-share {
+  padding-top: 10px;
 }

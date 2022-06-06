@@ -51,3 +51,11 @@
   border: 2px solid #D5B78A;
   border-radius: 5px;
 }
+.hide {
+  display: none;
+}
+
+.myDIV:hover + .hide {
+  display: block;
+  color: white;
+}

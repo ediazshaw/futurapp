@@ -4,7 +4,6 @@ class EntriesController < ApplicationController
     @date_entries = @date_entries.each do |date, entries|
       current_user.entries.where(remember_date:(Date.parse(date).beginning_of_day..Date.parse(date).end_of_day)).map {|e| entries << e }
     end
-
   end
 
   def new
@@ -15,7 +14,7 @@ class EntriesController < ApplicationController
     @entry = Entry.new(entry_params)
     @entry.user = current_user
     if @entry.save
-      redirect_to entries_path
+      redirect_to entries_path(anchor: 'go-today')
     else
       render "pages/home"
     end
