@@ -20,9 +20,15 @@
         </a>
       </div>
       <div>
-        <a href="<%= new_entry_path %>" class="nav-link py-3" title="Write a New Entry" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
+        <%# <a href="" class="nav-link py-3" title="Write a New Entry" data-bs-toggle="tooltip" data-bs-placement="right" data-bs-original-title="Products">
           <i class="fa-solid fa-circle-plus menu-icons icons"></i>
-        </a>
+        </a> %>
+        <!-- Button trigger modal -->
+        <button data-bs-toggle="modal" data-bs-target="#newEntryModal" class="button-navbar-remove" title="Write a New Entry">
+          <i class="fa-solid fa-circle-plus menu-icons icons"></i>
+        </button>
+
+
       </div>
     <div class="dropdown">
       <a href="<%= profile_path %>" class="d-flex align-items-center justify-content-center p-3 link-dark text-decoration-none dropdown-toggle menu-icons" id="dropdownUser3" data-bs-toggle="dropdown" aria-expanded="false">
@@ -35,5 +41,16 @@
         <li><hr class="dropdown-divider"></li>
         <li><a class="dropdown-item" href="#">Sign out</a></li>
       </ul>
+    </div>
+</div>
+  <!-- Modal -->
+  <div class="modal fade" id="newEntryModal" tabindex="-1" aria-labelledby="newEntryModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+      <div class="modal-content">
+        <button type="button" class="btn-close modal-close-button" data-bs-dismiss="modal" aria-label="Close"></button>
+        <div class="modal-body">
+          <%= render "entries/new_card" %>
+        </div>
+      </div>
     </div>
   </div>
