@@ -12,13 +12,13 @@
         </div>
         <div class="search-icons">
           <%= check_box_tag("categories[]", "Prediction" , params[:categories].present? && params[:categories].include?("Prediction") ? true : false, onchange: 'this.form.submit()', id: "category-prediction") %>
-          <label for="category-prediction"><span class="iconify" data-icon="fluent:predictions-20-regular"></span></label>
+          <label for="category-prediction" title="Predictions"><span class="iconify " data-icon="fluent:predictions-20-regular"></span></label>
           <%= check_box_tag("categories[]", "Event", params[:categories].present? && params[:categories].include?("Event") ? true : false, onchange: 'this.form.submit()', id: "category-event")%>
-          <label for="category-event"><span class="iconify" data-icon="bx:party"></span></label>
+          <label for="category-event" title="Events"><span class="iconify" data-icon="bx:party"></span></label>
           <%= check_box_tag("categories[]", "Thought", params[:categories].present? && params[:categories].include?("Thought") ? true : false, onchange: 'this.form.submit()', id: "category-thought") %>
-          <label for="category-thought"><span class="iconify" data-icon="fluent:thinking-24-regular"></span></label>
+          <label for="category-thought" title="Thoughts"><span class="iconify" data-icon="fluent:thinking-24-regular"></span></label>
           <%= check_box("", :question_day, {checked: params[:question_day] == "true" ? true : false, onchange: 'this.form.submit()'}, true, false) %>
-          <label for="question_day"><span class="iconify" data-icon="fluent:calendar-question-mark-16-regular"></span></label>
+          <label for="question_day" title="Questions of the Day"><span class="iconify" data-icon="fluent:calendar-question-mark-16-regular"></span></label>
           <!--<input type="text" name="start_date" value="<%= params[:start_date] %>" onchange='this.form.submit()'>-->
         </div>
       <% end %>
@@ -26,15 +26,22 @@
     <% @entries.each do |entry| %>
       <div class="card-search">
         <div class="title-date d-flex">
-          <div class="title-search"><h3><%= entry.theme %></h3></div>
+          <div class="title-search" title="Theme">
+            <h6 title="Category"><%= entry.category.category %>&nbsp<%= "& Question of the Day" if entry.question_day %></h6>
+            <h3 title="Theme"><%= entry.theme %></h3>
+          </div>
           <div class="date-search d-flex">
-            <p><i class="fa-solid fa-pen-to-square"></i>&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p>
+          <div class="myDIV"><p><i class="fa-solid fa-pen-to-square"></i>&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p></div>
+          <div class="hide">Creation Date</div>
+          <div class="myDIV">
             <p><i class="fa-solid fa-calendar-check"></i>&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+          </div>
+          <div class="hide">Predicted Date</div>
           </div>
         </div>
         <div class="comment-share d-flex">
-          <div class="comment-search"><%= entry.comment %></div>
-          <div class="share-search"><i class="fa-solid fa-share-nodes"></i></div>
+          <div class="comment-search" title="Comment"><%= entry.comment %></div>
+          <div class="share-search" title="Share"><i class="fa-solid fa-share-nodes"></i></div>
         </div>
       </div>
     <% end %>

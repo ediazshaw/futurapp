@@ -12,12 +12,23 @@ body {
 }
 
 .circle {
+  height: 200px;
+  width: 200px;
   font-weight: bold;
-  padding: 20px 20px;
+  padding: 0px 20px;
   border-radius: 50%;
-  background-color: #D77B3E;
-  color: white;
+  // background-color: #D77B3E;
+  color: #D77B3E;
   z-index: 2;
+  display:flex;
+  align-items: center;
+  justify-content: center;
+  background-image: url("logo.png");
+  background-size: cover;
+}
+
+.rotate{
+  animation: rotation 10s infinite linear;
 }
 
 .how-it-works.row {
@@ -63,6 +74,9 @@ body {
 .timeline .col-2 {
   display: flex;
   overflow: hidden;
+}
+a{
+  text-decoration: none;
 }
 .timeline .corner {
   border: 3px solid #D77B3E;
