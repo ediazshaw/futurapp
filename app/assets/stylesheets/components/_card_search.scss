@@ -38,7 +38,7 @@
 .share-search{
   color: #D5B78A;
   font-size:30px;
-  padding-right: 20px;
+  padding-right: 10px;
 }
 
 .search-icons{
@@ -57,4 +57,14 @@ justify-content: end;
 
 .button-text{
   text-align: center;
+}
+
+.images-search{
+  display: flex;
+  justify-content: start;
+  margin: 10px;
+}
+
+.images-search img{
+  margin-right: 10px;
 }

@@ -51,6 +51,14 @@
               <div class="share-search" title="Share"><i class="fa-solid fa-share-nodes"></i></div>
             </button>
         </div>
+        <% if entry.photos.attached? %>
+          <hr>
+          <div class="images-search">
+            <% entry.photos.each do |photo| %>
+              <%= cl_image_tag photo.key, height: 60, crop: :fill %>
+            <% end %>
+          </div>
+        <% end %>
       </div>
       <!-- Modal -->
 <div class="modal fade" id="exampleModal<%= entry.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
