@@ -1,20 +1,22 @@
 .card-category-new-form {
   display: flex;
-  width: 553px;
-  height: 332px;
-
+  min-width: 553px;
+  min-height: 332px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .card-category-show-card {
   display: flex;
-  width: 553px;
-  height: 332px;
-
+  min-width: 553px;
+  min-height: 332px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
 }
 
 .card-category__img {
+  height: 60%;
+}
+
+.card-category__img-question-day {
   height: 60%;
 }
 
@@ -28,22 +30,26 @@
   object-fit: cover;
 }
 
+.card-category__img-question-day img{
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .card-category__show-img img{
   width: 100%;
   height: 100%;
   object-fit: cover;
 }
 
-.card-question-title {
+.card-question-title-question-day {
   position: absolute;
   top: 65px;
   left: 10px;
-
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 800;
   font-size: 24px;
-
   color: #FFFFFF;
 }
 
@@ -56,19 +62,22 @@
   font-weight: 700;
   font-size: 16px;
   color: #FFFFFF;
-
 }
 
 .card-category__topic {
-  width: 270px;
-  height: 320px;
+  width: 33%;
+  background: #FFFFFF;
+  border-radius: 5px 0px 0px 5px;
+}
+
+.card-category__topic-question-day {
+  width: 40%;
   background: #FFFFFF;
   border-radius: 5px 0px 0px 5px;
 }
 
 .card-category__show-topic {
   width: 33%;
-  height: 320px;
   background: #FFFFFF;
   border-radius: 5px 0px 0px 5px;
 }
@@ -83,15 +92,42 @@
   font-weight: 600;
   font-size: 16px;
   line-height: 22px;
-
-  /* orange */
-
   color: #D77B3E;
+  display: flex;
+  align-items: center;
+}
+
+.card-category__questions-question-day {
+  margin: auto;
+  width: 190px;
+  height: 40%;
+  padding: 15px 5px 5px 5px;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 20px;
+  line-height: 22px;
+  color: #D77B3E;
+  display: flex;
+  align-items: center;
 }
 
 .card-category__form {
-  width: 270px;
-  height: 320px;
+  width: 67%;
+  padding: 10px;
+  background-color:#D77B3E;
+  color: white;
+  border-radius: 0px 5px 5px 0px;
+  .form-check-input {
+    transform: scale(0);
+  }
+  .form-check-input + label {
+    cursor:pointer
+  }
+}
+
+.card-category__form-question-day {
+  width: 60%;
   padding: 10px;
   background-color:#D77B3E;
   color: white;
@@ -106,7 +142,6 @@
 
 .card-category__show {
   width: 67%;
-  height: 320px;
   padding: 10px;
   background-color:#D77B3E;
   color: white;
@@ -147,7 +182,6 @@
   bottom: 10px;
 }
 
-
 .button-text {
   font-family: 'Nunito';
   font-style: normal;
@@ -182,7 +216,6 @@
   font-weight: 200;
   font-size: 12px;
 }
-
 
 .category-selector + label:after {
   background: none repeat scroll 0 0 transparent;
@@ -276,9 +309,16 @@
   }
 }
 
-.hover-line-style:hover {
+.hover-line-style:hover,
+.hover-line-style.selected {
   font-size: 16px;
   font-weight: 800;
+}
+
+.hover-line-style:hover:after,
+.hover-line-style.selected:after {
+  width: 100%;
+  left: 0;
 }
 
 .hover-line-style:after {
@@ -292,10 +332,7 @@
   transition: width 0.3s ease 0s, left 0.3s ease 0s;
   width: 0;
 }
-.hover-line-style:hover:after {
-  width: 100%;
-  left: 0;
-}
+
 
 .date-inline {
   display: flex;
@@ -311,11 +348,6 @@
 .category-day-inline {
   display: flex;
   justify-content: space-around;
-}
-
-hr {
-  margin-top: 5px;
-  margin-bottom: 5px;
 }
 
 .margin-dates-show {
