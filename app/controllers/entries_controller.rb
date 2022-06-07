@@ -1,13 +1,20 @@
 class EntriesController < ApplicationController
   def index
+
     @date_entries = current_user.entries.group_by { |x| x.created_at.strftime("%d-%b-%y") }
     @date_entries = @date_entries.each do |date, entries|
       current_user.entries.where(remember_date:(Date.parse(date).beginning_of_day..Date.parse(date).end_of_day)).map {|e| entries << e }
+      @category_entries = current_user.entries.where(created_at: (Date.parse(date).beginning_of_day..Date.parse(date).end_of_day)).group_by(&:category_id)
+      @category_entries[:predicted_entries] = current_user.entries.where(remember_date: (Date.parse(date).beginning_of_day..Date.parse(date).end_of_day))
     end
   end
 
   def new
     @entry = Entry.new
+    respond_to do |format|
+      format.html {}
+      format.text { render partial: "entries/new_card", formats: [:html] }
+    end
   end
 
   def create
@@ -38,8 +45,14 @@ class EntriesController < ApplicationController
   end
 
   def show
+    @categories = Category.all.to_a + [Category.new(category: "Predicted"), Category.new(category: "Question of the day")]
     @category_entries = current_user.entries.where(created_at:(Date.parse(params[:id]).beginning_of_day..Date.parse(params[:id]).end_of_day)).group_by(&:category_id)
     @category_entries[:predicted_entries] = current_user.entries.where(remember_date: (Date.parse(params[:id]).beginning_of_day..Date.parse(params[:id]).end_of_day))
+
+    respond_to do |format|
+      format.html {}
+      format.text { render partial: "entries/entry", formats: [:html] }
+    end
   end
 
   def forum

@@ -1,0 +1,27 @@
+.modal-close-button {
+  position: absolute;
+  top: 2px;
+  right: -28px;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 25px;
+  height: 25px;
+
+/* orange */
+
+  background-color: #D77B3E;
+  border: 2px solid #FFFFFF;
+  border-radius: 50%;
+}
+
+.modal-content {
+  background-color: transparent !important;
+}
+
+.btn-close {
+  opacity: 1 !important;
+}
+
+a:hover {
+  color: #D77B3E;
+}

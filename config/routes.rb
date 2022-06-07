@@ -7,6 +7,13 @@ Rails.application.routes.draw do
     resources :reviews, only: [ :create ]
   end
   get "/search", to: "entries#search", as: :search
+
   get "/forum", to: "entries#forum", as: :forum
   get "forum/:id", to: "entries#forum_show", as: :forum_theme
+
+  require "sidekiq/web"
+  # authenticate :user, ->(user) { user.admin? } do
+    mount Sidekiq::Web => '/sidekiq'
+  # end
+
 end
