@@ -1,14 +1,27 @@
-<h1>Forum Show</h1>
-<% @entries.each do |entry| %>
-  <% if params[:id] == entry.theme %>
-    <p><%= entry.id %></p>
-    <p><%= entry.user.email %></p>
-    <p><%= entry.comment %></p>
-    <%# <p><%= link_to 'Leave a comment', entry_reviews_path(@entry) %>
-  <%= simple_form_for [ @entry, @review ] do |f| %>
-  <%= f.input :content %>
-  <%= f.submit "Submit comment", class: "btn btn-primary" %>
-<% end %>
+<%= render 'shared/navbar_lateral' %>
+<div class="page-container">
+  <div class="content-container-forum-show">
+    <h1>Forum Show</h1>
+    <h3>Theme: <%= params[:id] %></h3>
+    <% @entries_with_theme.each do |entry| %>
+      <% if !entry.private %>
+        <p><%= entry.user.email %></p>
+        <p><%= entry.comment %></p>
+        <hr>
+        <p>Comments</p>
+        <% @reviews.each do |review| %>
+          <% if review.entry_id == entry.id %>
+            <% user_typing = User.find(review.user_id) %>
+            <p><%= user_typing.email %>: <%= review.content %></p>
+          <% end %>
+        <% end %>
+            <hr>
+        <%= simple_form_for [ entry, @review ] do |f| %>
+          <%= f.input :content, label:"Comment" %>
+          <%= f.submit "Comment", class: "btn btn-primary" %>
+        <% end %>
+      <% end %>
+    <% end %>
     <hr>
-  <% end %>
-<% end %>
+  </div>
+</div>

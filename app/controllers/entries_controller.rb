@@ -44,13 +44,14 @@ class EntriesController < ApplicationController
 
   def forum
     @entries = Entry.all
+    @entries_public = Entry.where(private:false)
   end
 
   def forum_show
     # @theme = Entry.find(params[:theme])
-    @entries = Entry.all
     @review = Review.new
-    @entry = Entry.find(params[:entry])
+    @entries_with_theme = Entry.where(theme: params[:id])
+    @reviews = Review.all
   end
 
   private
