@@ -32,7 +32,7 @@
       <div class="card-search">
         <div class="title-date d-flex">
           <div class="title-search" title="Theme">
-            <h6 title="Category"><%= entry.category.category %>&nbsp<%= "& Question of the Day" if entry.question_day %></h6>
+            <h6 title="Category"><%= entry.category.category %>&nbsp<%= "& Question of the Day" if entry.question_day %>&nbsp<%= "& Public" if !entry.private %></h6>
             <h3 title="Theme"><%= entry.theme %></h3>
           </div>
           <div class="date-search d-flex">

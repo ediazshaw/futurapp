@@ -19,6 +19,13 @@ user1 = User.new(
 )
 user1.save!
 puts user1.email
+
+user2 = User.new(
+  email: "edu@diaz.com",
+  password: '123456'
+)
+user2.save!
+puts user2.email
 puts 'Creating fake data...'
 category = Category.create(category: "Thought")
 category1 = Category.create(category: "Prediction")
@@ -30,9 +37,10 @@ category2 = Category.create(category: "Event")
     user: User.all.sample,
     theme: Faker::Book.title,
     comment: Faker::Lorem.paragraphs(number: 5).join(" "),
-    created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-02'),
-    remember_date: Faker::Date.between(from: '2014-09-23', to: '2032-09-25'),
-    question_day: rand(0..1)
+    created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+    remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+    question_day: rand(0..1),
+    private: rand(0..1)
   )
   entry.save!
   p entry
@@ -45,29 +53,83 @@ puts 'Finished!'
     user: user1,
     theme: Faker::Book.title,
     comment: Faker::Lorem.paragraphs(number: 5).join(" "),
-    created_at: Faker::Date.between(from: '2022-05-31', to: '2022-06-02'),
-    remember_date: Faker::Date.between(from: '2014-09-23', to: '2032-09-25'),
-    question_day: rand(0..1)
+    created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+    remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+    question_day: rand(0..1),
+    private: rand(0..1)
   )
   entry.save!
   p entry
 end
-
+entry = Entry.new(
+  category: Category.all.sample,
+  user: user1,
+  theme: "Nadal Win",
+  comment: Faker::Lorem.paragraphs(number: 5).join(" "),
+  created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+  remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+  question_day: rand(0..1),
+  private: false
+)
+entry.save!
+entry = Entry.new(
+  category: Category.all.sample,
+  user: user1,
+  theme: "Nadal Win",
+  comment: Faker::Lorem.paragraphs(number: 5).join(" "),
+  created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+  remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+  question_day: rand(0..1),
+  private: false
+)
+entry.save!
+entry = Entry.new(
+  category: Category.all.sample,
+  user: user1,
+  theme: "Going to Mars",
+  comment: Faker::Lorem.paragraphs(number: 5).join(" "),
+  created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+  remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+  question_day: rand(0..1),
+  private: false
+)
+entry.save!
 10.times do
   entry = Entry.new(
     category: Category.all.sample,
-    user: user1,
+    user: user2,
     theme: Faker::Book.title,
     comment: Faker::Lorem.paragraphs(number: 5).join(" "),
-    created_at: Faker::Date.between(from: '2014-09-23', to: '2018-09-25'),
-    remember_date: Faker::Date.between(from: '2022-05-31', to: '2022-06-02'),
-    question_day: rand(0..1)
+    created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+    remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+    question_day: rand(0..1),
+    private: rand(0..1)
   )
   entry.save!
   p entry
 end
-
-
+entry = Entry.new(
+  category: Category.all.sample,
+  user: user2,
+  theme: "Nadal Win",
+  comment: Faker::Lorem.paragraphs(number: 5).join(" "),
+  created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+  remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+  question_day: rand(0..1),
+  private: false
+)
+entry.save!
+entry = Entry.new(
+  category: Category.all.sample,
+  user: user2,
+  theme: "Going to Mars",
+  comment: Faker::Lorem.paragraphs(number: 5).join(" "),
+  created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+  remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+  question_day: rand(0..1),
+  private: false
+)
+entry.save!
 QuestionDay.destroy_all
 questions = ["Do you think houses will be more environmentally friendly in the future?",
              "Where will we get our energy when we run out of oil?",
