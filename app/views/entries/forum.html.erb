@@ -5,29 +5,34 @@
       <div class="title-forum">
         <h1>Forum</h1>
       </div>
-      <div class="subtitle-forum d-flex">
-        <h3>Themes</h3>
-        <h4>Nº of Entries</h4>
-      </div>
-      <% entry_themes = [] %>
-      <% @entries_public.each do |entry| %>
-        <% entry_themes << entry.theme %>
-      <% end %>
-      <% entry_themes_duplicated = entry_themes.select{ |theme| entry_themes.count(theme) > 1}.uniq %>
-      <% @entries_public.each do |entry| %>
-        <% if !entry.private && entry_themes_duplicated.include?(entry.theme) %>
-          <% entry_themes_duplicated.each_with_index do |dup, index| %>
-            <% if dup == entry.theme %>
-                <% entry_themes_duplicated.delete_at(index) %>
-            <% end %>
-          <% end %>
-          <div class="specific-theme-count d-flex">
-            <h4><%= entry.theme %></h4>
-            <h4><%= Entry.where(theme:entry.theme).where(private:false).count %></h4>
-          </div>
-          <p><%= link_to "Check out other's Ideas", forum_theme_path(entry.theme) %></p>
+
+      <div class="forum-border-top">
+        <div class="subtitle-forum d-flex">
+          <h3 class="forum-title-style">Themes</h3>
+          <h4 class="forum-title-style">Nº of Entries</h4>
+        </div>
+        <% entry_themes = [] %>
+        <% @entries_public.each do |entry| %>
+          <% entry_themes << entry.theme %>
         <% end %>
-      <% end %>
+        <% entry_themes_duplicated = entry_themes.select{ |theme| entry_themes.count(theme) > 1}.uniq %>
+        <% @entries_public.each do |entry| %>
+          <% if !entry.private && entry_themes_duplicated.include?(entry.theme) %>
+            <% entry_themes_duplicated.each_with_index do |dup, index| %>
+              <% if dup == entry.theme %>
+                  <% entry_themes_duplicated.delete_at(index) %>
+              <% end %>
+            <% end %>
+            <div class="specific-theme-count d-flex">
+              <h4 class="forum-theme-style"><%= entry.theme %></h4>
+              <div class="forum-number-style">
+                <h4><%= Entry.where(theme:entry.theme).where(private:false).count %></h4>
+              </div>
+            </div>
+            <p><%= link_to "Check out other's Ideas", forum_theme_path(entry.theme) %></p>
+          <% end %>
+        <% end %>
+      </div>
     </div>
   </div>
 </div>
