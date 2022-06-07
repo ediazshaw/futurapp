@@ -3,8 +3,15 @@
   display: flex;
   flex-direction: column;
   align-items: center;
+  border: 1px solid #000;
 }
 .subtitle-forum{
   width: 100%;
   justify-content: space-between;
+}
+
+.specific-theme-count{
+  justify-content: space-between;
+  align-items: center;
+  width: 100%;
 }
