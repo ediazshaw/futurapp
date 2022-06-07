@@ -7,7 +7,7 @@
       </div>
       <div class="subtitle-forum d-flex">
         <h3>Themes</h3>
-        <h3>Number of Entries</h3>
+        <h4>Nº of Entries</h4>
       </div>
       <% entry_themes = [] %>
       <% @entries_public.each do |entry| %>
@@ -21,9 +21,11 @@
                 <% entry_themes_duplicated.delete_at(index) %>
             <% end %>
           <% end %>
-          <h4><%= entry.theme %></h4>
-          <%= Entry.where(theme:entry.theme).where(private:false).count %>
-          <p><%= link_to "Cheack out other Ideas", forum_theme_path(entry.theme) %></p>
+          <div class="specific-theme-count d-flex">
+            <h4><%= entry.theme %></h4>
+            <h4><%= Entry.where(theme:entry.theme).where(private:false).count %></h4>
+          </div>
+          <p><%= link_to "Check out other's Ideas", forum_theme_path(entry.theme) %></p>
         <% end %>
       <% end %>
     </div>

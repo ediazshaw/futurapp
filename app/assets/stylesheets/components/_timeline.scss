@@ -34,12 +34,12 @@ body {
 .how-it-works.row {
   display: flex;
 }
-.how-it-works.row .col-2 {
-  display: inline-flex;
-  align-self: stretch;
-  align-items: center;
-  justify-content: center;
-}
+// .how-it-works.row .col-2 {
+//   display: inline-flex;
+//   align-self: stretch;
+//   align-items: center;
+//   justify-content: center;
+// }
 .how-it-works.row .col-2::after {
   content: "";
   position: absolute;
@@ -110,6 +110,11 @@ a{
   font-size: 40px;
   }
 
-.date-padding-timeline {
-  padding-right: 5px;
+// .date-padding-timeline {
+//   padding-right: 5px;
+// }
+
+.row{
+  padding-left: 0;
+  --bs-gutter-x: 0;
 }

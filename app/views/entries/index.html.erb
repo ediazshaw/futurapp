@@ -111,7 +111,7 @@
               <% next %>
             <% end %>
           <% end %>
-          <a href="<%= entry_path(real_show_date_format) %>" class="circle date-padding-timeline <%= is_there_content %>" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" data-action="click->modal-entry#getContent">
+          <a href="<%= entry_path(real_show_date_format) %>" class="circle <%= is_there_content %>" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" data-action="click->modal-entry#getContent">
               <%= real_show_date_format %>
           </a>
         </div>
