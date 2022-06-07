@@ -56,7 +56,7 @@ class EntriesController < ApplicationController
 
   def forum
     @entries = Entry.all
-    @entries_public = Entry.where(private:false)
+    @entries_public = Entry.where(private: false)
   end
 
   def forum_show
@@ -69,6 +69,6 @@ class EntriesController < ApplicationController
   private
 
   def entry_params
-    params.require(:entry).permit(:theme, :comment, :remember_date, :question_day, :created_at, :category_id, photos: [])
+    params.require(:entry).permit(:theme, :comment, :remember_date, :question_day, :created_at, :category_id, :private, photos: [])
   end
 end
