@@ -1,27 +1,33 @@
 <%= render 'shared/navbar_lateral' %>
 <div class="page-container">
   <div class="content-container-forum-show">
-    <h1>Forum Show</h1>
-    <h3>Theme: <%= params[:id] %></h3>
+    <div class="forum-show-theme">
+      <h3><%= params[:id] %></h3>
+      <p><i class="fa-solid fa-comments forum-fontawesome"></i>Forum</p>
+    </div>
     <% @entries_with_theme.each do |entry| %>
-      <% if !entry.private %>
-        <p><%= entry.user.email %></p>
-        <p><%= entry.comment %></p>
-        <hr>
-        <p>Comments</p>
-        <% @reviews.each do |review| %>
-          <% if review.entry_id == entry.id %>
-            <% user_typing = User.find(review.user_id) %>
-            <p><%= user_typing.email %>: <%= review.content %></p>
-          <% end %>
+      <div class="forum-entry">
+        <% if !entry.private %>
+          <p><%= entry.user.email %></p>
+          <div class="forum-entry-principal">
+            <p><%= entry.comment %></p>
+          </div>
+      </div>
+      <% @reviews.each do |review| %>
+      <div class="forum-comments">
+        <% if review.entry_id == entry.id %>
+          <% user_typing = User.find(review.user_id) %>
+          <p><%= user_typing.email %>: <%= review.content %></p>
         <% end %>
-            <hr>
+      </div>
+      <% end %>
+      <div class="forum-new-comment">
         <%= simple_form_for [ entry, @review ] do |f| %>
-          <%= f.input :content, label:"Comment" %>
+          <%= f.input :content, label:"Comment", input_html: {class: "forum-new-comment-form"} %>
           <%= f.submit "Comment", class: "btn btn-primary" %>
         <% end %>
-      <% end %>
+        <% end %>
+      </div>
     <% end %>
-    <hr>
   </div>
 </div>

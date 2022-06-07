@@ -1,3 +1,36 @@
 .content-container-forum-show{
-  margin: 20px 100px 20px 200px;
+  padding-top: 2.5em;
+  margin-right: 350px;
+  margin-left: 470px;
+  font-family: Nunito;
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: column;
+}
+.forum-fontawesome {
+  color: #D77B3E;
+  padding-right: 15px;
+}
+.forum-entry {
+  padding-top: 15px;
+  border-top: #D77B3E solid 1px;
+}
+.forum-comments {
+  margin: 15px;
+  padding: 15px;
+  background-color: #FCE1AC;
+  border-radius: 10px;
+}
+.forum-new-comment {
+  padding: 15px;
+  margin: 15px;
+  border-radius: 10px;
+  background-color: #FCD179;
+}
+.forum-entry-principal {
+  padding: 15px;
+}
+.forum-new-comment-form {
+  background-color: #FCE1AC;
+  border-radius: 10px;
 }
