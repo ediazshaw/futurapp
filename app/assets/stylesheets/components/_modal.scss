@@ -1,17 +1,21 @@
 .modal-close-button {
   position: absolute;
-  top: 2px;
-  right: -28px;
+  top: 0px;
+  right: 0px;
   z-index: 1;
   box-sizing: border-box;
   width: 25px;
   height: 25px;
+}
 
-/* orange */
-
-  background-color: #D77B3E;
-  border: 2px solid #FFFFFF;
-  border-radius: 50%;
+.modal-close-button-navbar {
+  position: absolute;
+  top: 2px;
+  right: -82px;
+  z-index: 1;
+  box-sizing: border-box;
+  width: 25px;
+  height: 25px;
 }
 
 .modal-content {

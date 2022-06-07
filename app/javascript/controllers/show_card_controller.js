@@ -1,11 +1,12 @@
 import { Controller } from "stimulus"
 
 export default class extends Controller {
-  static targets = ["topic", "entry"]
+  static targets = ["topic", "entry", "title"]
 
   connect() {
     console.log(this.topicTargets)
-    console.log(this.entriesTargets)
+    console.log(this.entryTargets)
+    console.log(this.titleTargets)
   }
 
 
@@ -28,6 +29,16 @@ export default class extends Controller {
       } else {
         entry.classList.add("d-none");
       }
+    });
+
+    this.titleTargets.forEach(title => {
+      console.log(selected_value)
+      if (title.dataset.category == selected_value) {
+        title.classList.add("selected")
+        console.log(event.params.category)
+    } else {
+        title.classList.remove("selected")
+    }
     });
   }
 }

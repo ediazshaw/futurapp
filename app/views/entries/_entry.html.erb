@@ -3,7 +3,6 @@
       <% @categories.each do |category| %>
         <% card_title = category.category %>
         <div class="card-category__show-topic <%= card_title == "Thought" ? "" : "d-none" %>" data-show-card-target="topic" data-category="<%= card_title %>">
-          <p class="card-show-question-title"><%= card_title %></p>
           <div class="card-category__show-img">
             <%= image_tag "category/#{card_title.downcase}.jpg" %>
           </div>
@@ -25,32 +24,72 @@
       <% end %>
       <div class="card-category__show">
         <div class="category-day-inline">
-          <div class="card-text-categories-style" data-action="click->show-card#toggleCard" data-show-card-category-param="Question of the day"	>
-            <p class="hover-line-style">Question of the day</p>
+          <div class="card-text-categories-style" data-action="click->show-card#toggleCard" data-show-card-category-param="Question of the day">
+            <p class="hover-line-style" data-show-card-target="title" data-category="Question of the day" >Question of the day</p>
           </div>
           <div class="card-text-categories-style" data-action="click->show-card#toggleCard" data-show-card-category-param="Prediction">
-            <p><%= params[:id] %></p>
-            <p class="hover-line-style">Predictions</p>
+            <% params[:id] %>
+            <p class="hover-line-style" data-show-card-target="title" data-category="Prediction">Predictions</p>
           </div>
           <div class="card-text-categories-style" data-action="click->show-card#toggleCard" data-show-card-category-param="Thought">
-            <p><%= params[:id] %></p>
-            <p class="hover-line-style">Thoughts</p>
+            <% params[:id] %>
+            <p class="hover-line-style" data-show-card-target="title" data-category="Thought">Thoughts</p>
           </div>
           <div class="card-text-categories-style" data-action="click->show-card#toggleCard" data-show-card-category-param="Event">
-            <p><%= params[:id] %></p>
-            <p class="hover-line-style">Events</p>
+            <% params[:id] %>
+            <p class="hover-line-style" data-show-card-target="title" data-category="Event">Events</p>
           </div>
           <div class="card-text-categories-style" data-action="click->show-card#toggleCard" data-show-card-category-param="Predicted">
-            <p><%= params[:id] %></p>
-            <p class="hover-line-style">Predicted</p>
+            <% params[:id] %>
+            <p class="hover-line-style" data-show-card-target="title" data-category="Predicted">Predicted</p>
           </div>
         </div>
 
         <% @category_entries.each do |category, entries| %>
-          <% card_title = category.class == Integer ? Category.find(category).category : category = "Predicted" %>
+          <% card_title = category.class == Integer ? Category.find(category).category : category == :predicted_entries ? "Predicted" : "Question of the day" %>
         <div class="<%= card_title == "Thought" ? "" : "d-none" %>" data-category="<%= card_title %>" data-show-card-target="entry" >
           <% entries.each do |entry| %>
+            <% if card_title == "Predicted" %>
+            <hr>
             <div class="show-inline-flex d-flex">
+              <div>
+                <p class="card-text-titles-style">Theme (<%= entry.category.category %>) <%= "& Question of the Day" if entry.question_day %></p>
+                <p class="response-text-user response-text-user-margin"><%= entry.theme %></p>
+              </div>
+              <div>
+                <div class="margin-dates-show d-flex">
+                  <div>
+                    <p class="card-text-dates-style"><i class="fa-solid fa-pen-to-square"></i>&nbsp&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p>
+                    <p class="card-text-dates-style"><i class="fa-solid fa-calendar-check"></i>&nbsp&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+                  </div>
+                  <div class="response-icon-share">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% elsif card_title == "Question of the day"%>
+            <hr>
+            <div class="show-inline-flex d-flex">
+              <div>
+                <p class="card-text-titles-style">Theme (<%= entry.category.category %>)</p>
+                <p class="response-text-user response-text-user-margin"><%= entry.theme %></p>
+              </div>
+              <div>
+                <div class="margin-dates-show d-flex">
+                  <div>
+                    <p class="card-text-dates-style"><i class="fa-solid fa-pen-to-square"></i>&nbsp&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p>
+                    <p class="card-text-dates-style"><i class="fa-solid fa-calendar-check"></i>&nbsp&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+                  </div>
+                  <div class="response-icon-share">
+                    <i class="fa-solid fa-share-nodes"></i>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <% else %>
+            <hr>
+              <div class="show-inline-flex d-flex">
               <div>
                 <p class="card-text-titles-style">Theme</p>
                 <p class="response-text-user response-text-user-margin"><%= entry.theme %></p>
@@ -67,11 +106,12 @@
                 </div>
               </div>
             </div>
-            <hr>
+            <% end %>
           <% end %>
         </div>
       <% end %>
-      <%= link_to 'Add new', new_entry_path,  class: "card-button-add-show button-text",  data: { action: "click->modal-entry#getContent" } %>
+      <hr>
+      <%= link_to 'Add new', new_entry_path,  class: "card-button-add-show button-text",  data: {bs_dismiss:"modal", bs_toggle:"modal", bs_target:"#newEntryModal"} %>
       </div>
       <hr>
     </div>

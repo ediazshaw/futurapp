@@ -77,7 +77,7 @@
               <% next %>
             <% end %>
           <% end %>
-          <a href="<%= entry_path(real_show_date_format) %>" class="circle  <%= is_there_content %>" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" data-action="click->modal-entry#getContent">
+          <a href="<%= entry_path(real_show_date_format) %>" class="circle date-padding-timeline <%= is_there_content %>" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" data-action="click->modal-entry#getContent">
             <%= real_show_date_format %>
           </a>
         </div>
@@ -111,7 +111,7 @@
               <% next %>
             <% end %>
           <% end %>
-          <a href="<%= entry_path(real_show_date_format) %>" class="circle  <%= is_there_content %>" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" data-action="click->modal-entry#getContent">
+          <a href="<%= entry_path(real_show_date_format) %>" class="circle date-padding-timeline <%= is_there_content %>" data-bs-toggle="modal" data-bs-target="#exampleModal" type="button" data-action="click->modal-entry#getContent">
               <%= real_show_date_format %>
           </a>
         </div>
@@ -121,9 +121,9 @@
   </div>
 
   <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog">
+    <div class="modal-dialog modal-lg">
       <div class="modal-content">
-        <button type="button" class="btn-close modal-close-button" data-bs-dismiss="modal" aria-label="Close"></button>
+      <button type="button" class="btn-close modal-close-button btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
         <div class="modal-body" data-modal-entry-target="modal">
           ...
         </div>
