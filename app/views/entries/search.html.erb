@@ -36,12 +36,12 @@
             <h3 title="Theme"><%= entry.theme %></h3>
           </div>
           <div class="date-search d-flex">
-          <div class="myDIV"><p><i class="fa-solid fa-pen-to-square"></i>&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p></div>
-          <div class="hide">Creation Date</div>
-          <div class="myDIV">
-            <p><i class="fa-solid fa-calendar-check"></i>&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
-          </div>
-          <div class="hide">Predicted Date</div>
+            <div class="myDIV"><p><i class="fa-solid fa-pen-to-square"></i>&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p></div>
+            <div class="hide">Creation Date</div>
+            <div class="myDIV">
+              <p><i class="fa-solid fa-calendar-check"></i>&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+            </div>
+            <div class="hide">Predicted Date</div>
           </div>
         </div>
         <div class="comment-share d-flex">
@@ -61,24 +61,23 @@
         <% end %>
       </div>
       <!-- Modal -->
-<div class="modal fade" id="exampleModal<%= entry.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Copy this text for sharing</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      <div class="modal fade" id="exampleModal<%= entry.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Copy this text for sharing</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+              <p><%= entry.comment %></p>
+              <p>Creation Date: <%= entry.created_at.strftime("%d-%b-%Y") %></p>
+              <p>Predicted Date: <%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+              <p>#Futurapp #<%= entry.theme.gsub(/\s+/, '') %> #<%= entry.theme.gsub(/\s+/, '') %>Futurapp</p>
+            </div>
+            <div class="modal-footer"></div>
+          </div>
+        </div>
       </div>
-      <div class="modal-body">
-        <p><%= entry.comment %></p>
-        <p>Creation Date: <%= entry.created_at.strftime("%d-%b-%Y") %></p>
-        <p>Predicted Date: <%= entry.remember_date.strftime("%d-%b-%Y") %></p>
-        <p>#Futurapp #<%= entry.theme.gsub(/\s+/, '') %> #<%= entry.theme.gsub(/\s+/, '') %>Futurapp</p>
-      </div>
-      <div class="modal-footer">
-      </div>
-    </div>
-  </div>
-</div>
     <% end %>
   </div>
 </div>

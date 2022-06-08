@@ -1,17 +1,85 @@
 .content-container-forum{
-  width: 80%;
+  width: 65%;
   display: flex;
   flex-direction: column;
   align-items: center;
-  border: 1px solid #000;
 }
 .subtitle-forum{
   width: 100%;
   justify-content: space-between;
+  padding: 8px 5px;
 }
 
 .specific-theme-count{
   justify-content: space-between;
   align-items: center;
   width: 100%;
+  border-top: 3px solid #D77B3E;
+  padding: 5px 0px;
+}
+
+.title-forum{
+  color: #D77B3E;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 22px;
+}
+
+.forum-title-style {
+  color: #D77B3E;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 600;
+  font-size: 32px;
+  line-height: 22px;
+}
+
+.forum-theme-style {
+  color: #D77B3E;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 22px;
+  padding-left: 10px;
+  a {
+    text-decoration: none;
+    color:#D77B3E;
+  }
+}
+
+.forum-number-style {
+  color: #D77B3E;
+  font-family: 'Nunito';
+  font-style: normal;
+  font-weight: 300;
+  font-size: 20px;
+  line-height: 22px;
+  padding-right: 10px;
+}
+
+.forum-border-top {
+  border-top: 4px solid;
+  width: 100%;
+  padding: 10px 0px;
+  border-image: linear-gradient(to bottom, #D77B3E 20%, green 20%, green 40%, blue 40%, blue 60%, maroon 60%, maroon 80%, #D77B3E 80%);
+  border-image-slice: 10;
+  //border-left: 4px solid;
+  border-bottom: 3px solid;
+}
+
+.forum-theme-style-subtext {
+  color: #D77B3E;
+  font-family: 'Nunito';
+  font-style:normal;
+  font-weight: 300;
+  font-size: 16px;
+  line-height: 22px;
+  padding-left: 15px;
+  a {
+    text-decoration: none;
+    color:#D77B3E;
+  }
 }
