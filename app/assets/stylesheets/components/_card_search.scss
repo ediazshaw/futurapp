@@ -1,12 +1,13 @@
 .title-date{
-  background-color: #943F22;
+  background-color: #FEF0D6;
   justify-content: space-between;
-  color: white;
+  color: #943F22;
   border-radius: 5px 5px 0 0;
   padding: 5px 20px;
   padding-bottom: 0px;
   font-size: large;
   align-items: center;
+  border-bottom: #943F22 solid 1px;
 }
 
 .title-search h3{
@@ -14,11 +15,11 @@
 }
 
 .card-search{
-  box-shadow: 1px 1px 1px 1px rgba(0, 0, 0, 0.2);
-  border-radius: 5px;
-  margin: 20px 10px 60px 10px;
+  margin: 20px 0px 50px 0px;
   font-family: Nunito;
   width: 100%;
+  border: #943F22 solid 1px;
+  border-radius: 5px;
 }
 
 .date-search{
@@ -28,6 +29,7 @@
 .comment-search{
   padding: 5px 20px;
   padding-right: 10px;
+  word-wrap: break-word;
 }
 
 .comment-share{

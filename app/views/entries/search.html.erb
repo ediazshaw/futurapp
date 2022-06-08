@@ -1,7 +1,6 @@
 <%= render 'shared/navbar_lateral' %>
-<div class="page-container">
-  <div class="content-container">
-
+<div class="page-container-search">
+  <div class="content-container-search">
       <%= form_tag search_path, class: "search-bar", method: :get do %>
         <div class="search-theme">
           <%= text_field_tag :query,
@@ -22,7 +21,7 @@
             <label for="question_day_search" title="Questions of the Day"><span class="iconify" data-icon="fluent:calendar-question-mark-16-regular"></span></label>
           </div>
           <div class="search-date-bar">
-            <input name="start_date" value="<%= params[:start_date] %>" onchange='this.form.submit()' class= "datepicker" id="search-date" label="Initial date" placeholder="Initial date">
+            <input name="start_date" value="<%= params[:start_date] %>" onchange='this.form.submit()' class= "datepicker" id="search-date" label="Initial date" placeholder="Initial date" style=>
             <input name="end_date" value="<%= params[:end_date] %>" onchange='this.form.submit()' class= "datepicker" id="search-date" label="Final date" placeholder="Final date">
           </div>
         </div>
