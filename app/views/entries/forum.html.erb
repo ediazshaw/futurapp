@@ -3,7 +3,7 @@
   <div class="content-container">
     <div class="content-container-forum">
       <div class="title-forum">
-        <h1>Forum</h1>
+        <h1>Welcome to the Forum!</h1>
       </div>
 
       <div class="forum-border-top">
@@ -24,12 +24,12 @@
               <% end %>
             <% end %>
             <div class="specific-theme-count d-flex">
-              <h4 class="forum-theme-style"><%= entry.theme %></h4>
+              <h4 class="forum-theme-style"><%= link_to entry.theme, forum_theme_path(entry.theme)%></h4>
               <div class="forum-number-style">
                 <h4><%= Entry.where(theme:entry.theme).where(private:false).count %></h4>
               </div>
             </div>
-            <p><%= link_to "Check out other's Ideas", forum_theme_path(entry.theme) %></p>
+            <p class="forum-theme-style-subtext"><%= link_to "Everyone is talking about this #{entry.category.category}!", forum_theme_path(entry.theme) %></p>
           <% end %>
         <% end %>
       </div>
