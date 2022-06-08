@@ -1,15 +1,14 @@
 <%= render 'shared/navbar_lateral' %>
-<div class="page-container">
-  <div class="content-container">
+<div class="page-container-forum">
+  <div class="content-container-forum-general">
     <div class="content-container-forum">
       <div class="title-forum">
         <h1>Welcome to the Forum!</h1>
       </div>
-
       <div class="forum-border-top">
         <div class="subtitle-forum d-flex">
-          <h3 class="forum-title-style">Themes</h3>
-          <h4 class="forum-title-style">Nº of Entries</h4>
+          <h3 class="forum-title-style"><strong>Themes</strong></h3>
+          <h4 class="forum-title-style"><strong>Nº of Entries</strong></h4>
         </div>
         <% entry_themes = [] %>
         <% @entries_public.each do |entry| %>
