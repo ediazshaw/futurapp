@@ -1,5 +1,6 @@
 require "faker"
 require "csv"
+require "open-uri"
 
 filepath = "./db/scrape.csv"
 
@@ -145,48 +146,69 @@ questions = ["Do you think houses will be more environmentally friendly in the f
 prediction_category = Category.where(category: "Prediction").first
 thought_category = Category.where(category: "Thought").first
 event_category = Category.where(category: "Event").first
-QuestionDay.create(
+
+question_day = QuestionDay.create(
   question: questions[0],
   theme: "House environmentally friendly",
-  date: '2022-06-01',
+  date: '2022-06-09',
   category: thought_category
 )
-QuestionDay.create(
+file = File.open(Rails.root.join('app/assets/images/category/environmentally.jpg'))
+question_day.photo.attach(io: file, filename: "environmentally.jpg", content_type: 'image/jpg')
+
+question_day = QuestionDay.create(
   question: questions[1],
   theme: "The world without oil",
-  date: '2022-06-02',
-  category: prediction_category
-)
-QuestionDay.create(
-  question: questions[2],
-  theme: "Development of China and India",
   date: '2022-06-04',
   category: prediction_category
 )
-QuestionDay.create(
-  question: questions[3],
-  theme: "Get married",
-  date: '2022-06-03',
-  category: event_category
-)
-QuestionDay.create(
-  question: questions[4],
-  theme: "Computers taking the world",
+file = File.open(Rails.root.join('app/assets/images/category/oil.jpg'))
+question_day.photo.attach(io: file, filename: "oil.jpg", content_type: 'image/jpg')
+
+question_day = QuestionDay.create(
+  question: questions[2],
+  theme: "Development of China and India",
   date: '2022-06-05',
   category: prediction_category
 )
-QuestionDay.create(
-  question: questions[5],
-  theme: "Consciousness",
+file = File.open(Rails.root.join('app/assets/images/category/development.jpg'))
+question_day.photo.attach(io: file, filename: "development.jpg", content_type: 'image/jpg')
+
+question_day = QuestionDay.create(
+  question: questions[3],
+  theme: "Get married",
   date: '2022-06-06',
-  category: thought_category
+  category: event_category
 )
-QuestionDay.create(
-  question: questions[6],
-  theme: "Health care",
+file = File.open(Rails.root.join('app/assets/images/category/marriage.jpg'))
+question_day.photo.attach(io: file, filename: "marriage.jpg", content_type: 'image/jpg')
+
+question_day = QuestionDay.create(
+  question: questions[4],
+  theme: "Computers taking the world",
   date: '2022-06-07',
   category: prediction_category
 )
+file = File.open(Rails.root.join('app/assets/images/category/computer.jpg'))
+question_day.photo.attach(io: file, filename: "computer.jpg", content_type: 'image/jpg')
+
+question_day = QuestionDay.create(
+  question: questions[5],
+  theme: "Consciousness",
+  date: '2022-06-08',
+  category: thought_category
+)
+file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
+question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+
+question_day = QuestionDay.create(
+  question: questions[6],
+  theme: "Health care",
+  date: '2022-06-10',
+  category: prediction_category
+)
+file = File.open(Rails.root.join('app/assets/images/category/healthcare.jpg'))
+question_day.photo.attach(io: file, filename: "healthcare.jpg", content_type: 'image/jpg')
 
 puts "Creating seeds scraped from LongBets"
 CSV.foreach(filepath, headers: :first_row) do |row|
