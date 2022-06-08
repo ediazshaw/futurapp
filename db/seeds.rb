@@ -1,4 +1,7 @@
 require "faker"
+require "csv"
+
+filepath = "./db/scrape.csv"
 
 User.destroy_all
 Category.destroy_all
@@ -184,3 +187,19 @@ QuestionDay.create(
   date: '2022-06-07',
   category: prediction_category
 )
+
+puts "Creating seeds scraped from LongBets"
+CSV.foreach(filepath, headers: :first_row) do |row|
+  entry = Entry.new(
+    category: Category.all.sample,
+    user: user2,
+    theme: row['theme'],
+    comment: row['comment'],
+    created_at: Faker::Date.between(from: '2022-06-07', to: '2022-06-10'),
+    remember_date: Faker::Date.between(from: '2023-01-01', to: '2023-06-08'),
+    question_day: 0,
+    private: false
+  )
+  entry.save!
+end
+puts "end of seeds from LongBets"
