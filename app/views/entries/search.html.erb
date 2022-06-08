@@ -36,12 +36,12 @@
             <h3 title="Theme"><%= entry.theme %></h3>
           </div>
           <div class="date-search d-flex">
-          <div class="myDIV"><p><i class="fa-solid fa-pen-to-square"></i>&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p></div>
-          <div class="hide">Creation Date</div>
-          <div class="myDIV">
-            <p><i class="fa-solid fa-calendar-check"></i>&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
-          </div>
-          <div class="hide">Predicted Date</div>
+            <div class="myDIV"><p><i class="fa-solid fa-pen-to-square"></i>&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p></div>
+            <div class="hide">Creation Date</div>
+            <div class="myDIV">
+              <p><i class="fa-solid fa-calendar-check"></i>&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+            </div>
+            <div class="hide">Predicted Date</div>
           </div>
         </div>
         <div class="comment-share d-flex">
@@ -74,11 +74,10 @@
         <p>Predicted Date: <%= entry.remember_date.strftime("%d-%b-%Y") %></p>
         <p>#Futurapp #<%= entry.theme.gsub(/\s+/, '') %> #<%= entry.theme.gsub(/\s+/, '') %>Futurapp</p>
       </div>
-      <div class="modal-footer modal-footer-search">
+      <div class="modal-footer modal-footer-search"> </div>
+       </div>
+        </div>
       </div>
-    </div>
-  </div>
-</div>
     <% end %>
   </div>
 </div>
