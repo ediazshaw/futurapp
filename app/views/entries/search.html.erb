@@ -1,7 +1,6 @@
 <%= render 'shared/navbar_lateral' %>
-<div class="page-container">
-  <div class="content-container">
-
+<div class="page-container-search">
+  <div class="content-container-search">
       <%= form_tag search_path, class: "search-bar", method: :get do %>
         <div class="search-theme">
           <%= text_field_tag :query,
@@ -22,7 +21,7 @@
             <label for="question_day_search" title="Questions of the Day"><span class="iconify" data-icon="fluent:calendar-question-mark-16-regular"></span></label>
           </div>
           <div class="search-date-bar">
-            <input name="start_date" value="<%= params[:start_date] %>" onchange='this.form.submit()' class= "datepicker" id="search-date" label="Initial date" placeholder="Initial date">
+            <input name="start_date" value="<%= params[:start_date] %>" onchange='this.form.submit()' class= "datepicker" id="search-date" label="Initial date" placeholder="Initial date" style=>
             <input name="end_date" value="<%= params[:end_date] %>" onchange='this.form.submit()' class= "datepicker" id="search-date" label="Final date" placeholder="Final date">
           </div>
         </div>
@@ -61,21 +60,21 @@
         <% end %>
       </div>
       <!-- Modal -->
-<div class="modal fade" id="exampleModal<%= entry.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header modal-header-search">
-        <h5 class="modal-title" id="exampleModalLabel">Copy this text for sharing</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body modal-body-search">
-        <p><%= entry.comment %></p>
-        <p>Creation Date: <%= entry.created_at.strftime("%d-%b-%Y") %></p>
-        <p>Predicted Date: <%= entry.remember_date.strftime("%d-%b-%Y") %></p>
-        <p>#Futurapp #<%= entry.theme.gsub(/\s+/, '') %> #<%= entry.theme.gsub(/\s+/, '') %>Futurapp</p>
-      </div>
-      <div class="modal-footer modal-footer-search"> </div>
-       </div>
+      <div class="modal fade" id="exampleModal<%= entry.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header modal-header-search">
+              <h5 class="modal-title" id="exampleModalLabel">Copy this text for sharing</h5>
+              <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-body-search">
+              <p><%= entry.comment %></p>
+              <p>Creation Date: <%= entry.created_at.strftime("%d-%b-%Y") %></p>
+              <p>Predicted Date: <%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+              <p>#Futurapp #<%= entry.theme.gsub(/\s+/, '') %> #<%= entry.theme.gsub(/\s+/, '') %>Futurapp</p>
+            </div>
+            <div class="modal-footer modal-footer-search"> </div>
+          </div>
         </div>
       </div>
     <% end %>

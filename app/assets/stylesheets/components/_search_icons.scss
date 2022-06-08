@@ -1,3 +1,14 @@
+.page-container-search {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+  background-color: #FFFFFF;
+  justify-content: center;
+}
+.content-container-search {
+  display: flex;
+  flex-direction: column;
+}
 .form-control-search {
   display: flex;
   flex-direction: row;
@@ -14,24 +25,24 @@
 }
 #search-by-theme {
   color:#943F22;
-  background-color: #D5B78A;
   font-family: Nunito;
-  height: 50px;
+  padding: 10px;
 }
 .search-icons {
   display: flex;
   flex-direction: row;
-  padding-bottom: 10px;
+  padding-bottom: 25px;
 }
 .search-bar {
   width: 100%;
   display: flex;
   justify-content: space-between;
   align-items: flex-end;
+  padding: 40px 0px;
 }
 #search-date.datepicker {
   color:#943F22 !important;
-  background-color: #e0c59d !important;
+  background-color: #D5B78A !important;
   font-family: Nunito !important;
   border: 1px solid #D5B78A;
   margin-right: 15px;
@@ -39,19 +50,19 @@
   border-radius: 5px;
 }
 #category-prediction:checked + label {
-  border: 2px solid #D5B78A;
+  border: 2px solid #943F22;
   border-radius: 5px;
 }
 #category-event:checked + label {
-  border: 2px solid #D5B78A;
+  border: 2px solid #943F22;
   border-radius: 5px;
 }
 #category-thought:checked + label {
-  border: 2px solid #D5B78A;
+  border: 2px solid #943F22;
   border-radius: 5px;
 }
 #question_day_search:checked + label {
-  border: 2px solid #D5B78A;
+  border: 2px solid #943F22;
   border-radius: 5px;
 }
 .hide {
@@ -60,7 +71,7 @@
 
 .myDIV:hover + .hide {
   display: block;
-  color: white;
+  color: #943F22;
 }
 
 .button-share{
