@@ -4,8 +4,9 @@
             collection_wrapper_class: 'category-wrapper',
             item_wrapper_class: 'category-item',
             input_html: {class: 'category-selector', data: { action: "click->entry-card#toggleCard" }},
-            value_method: :id, as: :radio_buttons, legend_tag: false, boolean_style: :inline %>
-  <%= f.input :theme %>
+            value_method: :id, as: :radio_buttons, legend_tag: false, boolean_style: :inline,
+            checked: @question_day.category_id %>
+  <%= f.input :theme, input_html: { value: @question_day.theme} %>
   <%= f.input :remember_date, label: "Predict the date", as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "Pick a date here" %>
   <%= f.input :comment, placeholder: 'Type your answer here...', label: false %>
   <%= f.label "Do you want this entry to be private?" %>

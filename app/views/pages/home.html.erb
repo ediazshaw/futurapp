@@ -16,10 +16,14 @@
       <div class="card-category__topic-question-day">
         <div class="card-category__img-question-day">
           <div class="card-question-title-question-day">Question <br>of the Day</div>
-          <%= image_tag 'mars2.jpg' %>
+          <%  if @question_day.photo.attached? %>
+            <%= image_tag @question_day.photo %>
+          <% else %>
+            <%= image_tag 'mars2.jpg' %>
+          <% end %>
         </div>
         <div class="card-category__questions-question-day">
-          <p>How and when do you think humans will land on Mars?</p>
+          <p><%= @question_day.question %></p>
         </div>
       </div>
       <div class="card-category__form-question-day">

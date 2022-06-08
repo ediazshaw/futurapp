@@ -4,7 +4,11 @@
         <% card_title = category.category %>
         <div class="card-category__show-topic <%= card_title == "Thought" ? "" : "d-none" %>" data-show-card-target="topic" data-category="<%= card_title %>">
           <div class="card-category__show-img">
-            <%= image_tag "category/#{card_title.downcase}.jpg" %>
+            <% if card_title == "Question of the day" && @question_day&.photo&.attached? %>
+              <%= image_tag @question_day.photo %>
+            <% else %>
+              <%= image_tag "category/#{card_title.downcase}.jpg" %>
+            <% end %>
           </div>
           <div class="card-category__questions">
             <% case card_title %>
@@ -17,7 +21,7 @@
             <% when "Prediction" %>
               <p>Can you predict the future? Tell us your most wild predictions...</p>
             <% when "Question of the day" %>
-              <p>How and when do you think humans will land on Mars?</p>
+              <p><%= @question_day&.question %></p>
             <% end %>
           </div>
         </div>
