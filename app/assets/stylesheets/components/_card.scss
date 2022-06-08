@@ -43,14 +43,20 @@
 }
 
 .card-question-title-question-day {
+  height: 60%;
   position: absolute;
-  top: 65px;
-  left: 10px;
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 800;
   font-size: 24px;
   color: #FFFFFF;
+  display: flex;
+    text-align: center;
+    /* justify-content: center; */
+    align-items: center;
+    width: 40%;
+    justify-content: center;
+    left: 0;
 }
 
 .card-show-question-title {
@@ -360,4 +366,9 @@
 
 .response-icon-share {
   padding-top: 10px;
+}
+
+.center-question-day-home {
+  display: flex;
+  align-items: center;
 }
