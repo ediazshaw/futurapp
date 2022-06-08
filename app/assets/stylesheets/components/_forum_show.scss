@@ -48,10 +48,14 @@
 .forum-new-comment-button {
   font-family: Nunito;
   background: #D77B3E;
-  color: white;
+  color: #FFFFFF;
   border-radius: 15px;
   border: #D77B3E solid 1px;
   padding: 3px 20px;
+  &:hover {
+    background: #FFFFFF;
+    color: #D77B3E;
+  }
 }
 .forum-comments-email p {
   margin-bottom: 10px;
