@@ -49,63 +49,61 @@
           <% card_title = category.class == Integer ? Category.find(category).category : category == :predicted_entries ? "Predicted" : "Question of the day" %>
         <div class="<%= card_title == "Thought" ? "" : "d-none" %>" data-category="<%= card_title %>" data-show-card-target="entry" >
           <% entries.each do |entry| %>
+            <% entry_target = Entry.find(entry.id) %>
             <% if card_title == "Predicted" %>
             <hr>
-            <div class="show-inline-flex d-flex">
-              <div>
-                <p class="card-text-titles-style">Theme (<%= entry.category.category %>) <%= "& Question of the Day" if entry.question_day %></p>
-                <p class="response-text-user response-text-user-margin"><%= entry.theme %></p>
-              </div>
-              <div>
-                <div class="margin-dates-show d-flex">
-                  <div>
-                    <p class="card-text-dates-style"><i class="fa-solid fa-pen-to-square"></i>&nbsp&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p>
-                    <p class="card-text-dates-style"><i class="fa-solid fa-calendar-check"></i>&nbsp&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
-                  </div>
-                  <div class="response-icon-share">
-                    <i class="fa-solid fa-share-nodes"></i>
+            <%= link_to search_path(anchor: entry_target) do %>
+              <div class="show-inline-flex d-flex">
+                <div class="text-white">
+                  <p class="card-text-titles-style">Theme (<%= entry.category.category %>) <%= "& Question of the Day" if entry.question_day %></p>
+                  <p class="response-text-user response-text-user-margin"><%= entry.theme %></p>
+                </div>
+                <div>
+                  <div class="margin-dates-show d-flex text-white">
+                    <div>
+                      <p class="card-text-dates-style"><i class="fa-solid fa-pen-to-square"></i>&nbsp&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p>
+                      <p class="card-text-dates-style"><i class="fa-solid fa-calendar-check"></i>&nbsp&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            <% end %>
             <% elsif card_title == "Question of the day"%>
             <hr>
-            <div class="show-inline-flex d-flex">
-              <div>
-                <p class="card-text-titles-style">Theme (<%= entry.category.category %>)</p>
-                <p class="response-text-user response-text-user-margin"><%= entry.theme %></p>
-              </div>
-              <div>
-                <div class="margin-dates-show d-flex">
-                  <div>
-                    <p class="card-text-dates-style"><i class="fa-solid fa-pen-to-square"></i>&nbsp&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p>
-                    <p class="card-text-dates-style"><i class="fa-solid fa-calendar-check"></i>&nbsp&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
-                  </div>
-                  <div class="response-icon-share">
-                    <i class="fa-solid fa-share-nodes"></i>
+            <%= link_to search_path(anchor: entry_target) do %>
+              <div class="show-inline-flex d-flex">
+                <div class= "text-white">
+                  <p class="card-text-titles-style">Theme (<%= entry.category.category %>)</p>
+                  <p class="response-text-user response-text-user-margin"><%= entry.theme %></p>
+                </div>
+                <div>
+                  <div class="margin-dates-show d-flex text-white">
+                    <div>
+                      <p class="card-text-dates-style"><i class="fa-solid fa-pen-to-square"></i>&nbsp&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p>
+                      <p class="card-text-dates-style"><i class="fa-solid fa-calendar-check"></i>&nbsp&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+                    </div>
                   </div>
                 </div>
               </div>
-            </div>
+            <% end %>
             <% else %>
             <hr>
-              <div class="show-inline-flex d-flex">
-              <div>
-                <p class="card-text-titles-style">Theme</p>
-                <p class="response-text-user response-text-user-margin"><%= entry.theme %></p>
-              </div>
-              <div>
-                <div class="margin-dates-show d-flex">
-                  <div>
-                    <p class="card-text-dates-style"><i class="fa-solid fa-pen-to-square"></i>&nbsp&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p>
-                    <p class="card-text-dates-style"><i class="fa-solid fa-calendar-check"></i>&nbsp&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+              <%= link_to search_path(anchor: entry_target) do %>
+                <div class="show-inline-flex d-flex">
+                <div class="text-white">
+                  <p class="card-text-titles-style">Theme</p>
+                  <p class="response-text-user response-text-user-margin"><%= entry.theme %></p>
+                </div>
+                <div>
+                  <div class="margin-dates-show d-flex text-white">
+                    <div>
+                      <p class="card-text-dates-style"><i class="fa-solid fa-pen-to-square"></i>&nbsp&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p>
+                      <p class="card-text-dates-style"><i class="fa-solid fa-calendar-check"></i>&nbsp&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+                    </div>
                   </div>
-                  <div class="response-icon-share">
-                    <i class="fa-solid fa-share-nodes"></i>
                   </div>
                 </div>
-              </div>
-            </div>
+              <% end %>
             <% end %>
           <% end %>
         </div>
