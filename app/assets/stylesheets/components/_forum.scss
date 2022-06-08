@@ -1,5 +1,15 @@
+.page-container-forum {
+  padding-top: 60px;
+  color: #000000;
+}
 .content-container-forum{
-  width: 65%;
+  width: 60%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.content-container-forum-general {
+  margin-left: 120px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -7,51 +17,52 @@
 .subtitle-forum{
   width: 100%;
   justify-content: space-between;
-  padding: 8px 5px;
+  padding: 10px 5px;
 }
 
 .specific-theme-count{
   justify-content: space-between;
   align-items: center;
   width: 100%;
-  border-top: 3px solid #D77B3E;
+  border-top: 1px solid #943F22;
   padding: 5px 0px;
 }
 
 .title-forum{
-  color: #D77B3E;
+  color: #943F22;
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 600;
   font-size: 32px;
   line-height: 22px;
+  padding-bottom: 25px;
 }
 
 .forum-title-style {
-  color: #D77B3E;
+  color: #943F22;
   font-family: 'Nunito';
   font-style: normal;
-  font-weight: 600;
-  font-size: 32px;
+  font-size: 20px;
   line-height: 22px;
 }
 
 .forum-theme-style {
-  color: #D77B3E;
+  color: #943F22;
   font-family: 'Nunito';
   font-style: normal;
-  font-weight: 300;
-  font-size: 20px;
   line-height: 22px;
-  padding-left: 10px;
+  font-size: 25px;
+  padding: 15px 10px;
+  margin: 0px;
   a {
     text-decoration: none;
-    color:#D77B3E;
+    color:#943F22;
+    font-weight: bolder;
   }
 }
 
 .forum-number-style {
-  color: #D77B3E;
+  color: #943F22;
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 300;
@@ -64,22 +75,22 @@
   border-top: 4px solid;
   width: 100%;
   padding: 10px 0px;
-  border-image: linear-gradient(to bottom, #D77B3E 20%, green 20%, green 40%, blue 40%, blue 60%, maroon 60%, maroon 80%, #D77B3E 80%);
+  border-image: linear-gradient(to bottom, #943F22 20%, green 20%, green 40%, blue 40%, blue 60%, maroon 60%, maroon 80%, #943F22 80%);
   border-image-slice: 10;
   //border-left: 4px solid;
-  border-bottom: 3px solid;
+  border-bottom: #943F22 solid 1px;
 }
 
 .forum-theme-style-subtext {
-  color: #D77B3E;
+  color: #943F22;
   font-family: 'Nunito';
   font-style:normal;
   font-weight: 300;
   font-size: 16px;
   line-height: 22px;
-  padding-left: 15px;
+  padding: 15px 30px;
   a {
     text-decoration: none;
-    color:#D77B3E;
+    color:#943F22;
   }
 }
