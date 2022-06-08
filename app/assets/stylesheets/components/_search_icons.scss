@@ -1,13 +1,14 @@
 .page-container-search {
-  display: grid;
-  min-height: 100vh;
-  grid-template-rows: auto 1fr auto;
+  display: flex;
   background-color: #FFFFFF;
   justify-content: center;
+  width: 100%;
 }
 .content-container-search {
   display: flex;
   flex-direction: column;
+  width:70%;
+  margin-left: 120px;
 }
 .form-control-search {
   display: flex;
