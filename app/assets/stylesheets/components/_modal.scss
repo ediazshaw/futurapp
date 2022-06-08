@@ -1,13 +1,20 @@
 .modal-close-button {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 27px;
+  right: 29px;
   z-index: 1;
   box-sizing: border-box;
   width: 25px;
   height: 25px;
 }
-
+.modal-header-search{
+  position: relative;
+}
+.btn-close-search{
+  position: absolute;
+  top: -9px;
+  left: 485px;
+}
 .modal-close-button-navbar {
   position: absolute;
   top: 2px;
