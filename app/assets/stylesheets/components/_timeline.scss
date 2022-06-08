@@ -7,7 +7,6 @@ body {
 
 .blue-bg {
   background-color: white;
-  color: #D77B3E;
   height: 100%;
 }
 
@@ -18,15 +17,17 @@ body {
   padding: 0px 20px;
   border-radius: 50%;
   // background-color: #D77B3E;
-  color: #D77B3E;
+  color: rgb(250, 242, 242);
   z-index: 2;
   display:flex;
   align-items: center;
   justify-content: center;
-  background-image: url("logo.png");
+  background-image: url("orangefuturapp_white.png");
   background-size: cover;
 }
-
+.circle:hover{
+  color: white;
+}
 .rotate{
   animation: rotation 10s infinite linear;
 }
@@ -66,7 +67,7 @@ body {
   height: 40px;
 }
 .timeline hr {
-  border-top: 3px solid black;
+  border-top: 3px solid white;
   margin: 0;
   top: 17px;
   position: relative;
@@ -79,7 +80,7 @@ a{
   text-decoration: none;
 }
 .timeline .corner {
-  border: 3px solid #D77B3E;
+  border: 3px solid white;
   width: 100%;
   position: relative;
   border-radius: 15px;
@@ -117,4 +118,8 @@ a{
 .row{
   padding-left: 0;
   --bs-gutter-x: 0;
+}
+
+.container-fluid{
+  background-color: #D77B3E;
 }

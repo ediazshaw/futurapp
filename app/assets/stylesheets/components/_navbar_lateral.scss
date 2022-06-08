@@ -6,10 +6,16 @@
   align-items: center;
   width: 120px !important;
   position: fixed;
+  border-right: 3px solid white;
 }
 .menu-icons {
   width: 100px;
   max-width: 100%;
+}
+.menu-icons-logo {
+  width: 60px;
+  max-width: 100%;
+  padding-top: 10px;
 }
 .icons {
   font-size: 30px;
