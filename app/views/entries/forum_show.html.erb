@@ -5,7 +5,7 @@
       <h3><strong><%= params[:id] %></strong></h3>
       <p><i class="fa-solid fa-comments forum-fontawesome"></i>Forum</p>
     </div>
-    <% @entries_with_theme.each do |entry| %>
+    <% @entries_public_and_theme.each do |entry| %>
       <div class="forum-entry">
         <% if !entry.private %>
           <p><%= entry.user.email %></p>
