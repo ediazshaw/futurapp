@@ -1,8 +1,8 @@
 <%= render 'shared/navbar_lateral' %>
-<div class="page-container">
+<div class="page-container-forum-show">
   <div class="content-container-forum-show">
     <div class="forum-show-theme">
-      <h3><%= params[:id] %></h3>
+      <h3><strong><%= params[:id] %></strong></h3>
       <p><i class="fa-solid fa-comments forum-fontawesome"></i>Forum</p>
     </div>
     <% @entries_with_theme.each do |entry| %>
@@ -14,17 +14,22 @@
           </div>
       </div>
       <% @reviews.each do |review| %>
-      <div class="forum-comments">
         <% if review.entry_id == entry.id %>
-          <% user_typing = User.find(review.user_id) %>
-          <p><%= user_typing.email %>: <%= review.content %></p>
+          <div class="forum-comments">
+            <% user_typing = User.find(review.user_id) %>
+            <div class="forum-comments-email">
+              <p><%= user_typing.email %>:</p>
+            </div>
+            <div class="forum-comments-comment">
+              <p><%= review.content %></p>
+            </div>
+          </div>
         <% end %>
-      </div>
       <% end %>
       <div class="forum-new-comment">
         <%= simple_form_for [ entry, @review ] do |f| %>
-          <%= f.input :content, label:"Comment", input_html: {class: "forum-new-comment-form"} %>
-          <%= f.submit "Comment", class: "btn btn-primary" %>
+          <%= f.input :content, label: false, input_html: {class: "forum-new-comment-form"} %>
+          <%= f.submit "Comment", class: "forum-new-comment-button" %>
         <% end %>
         <% end %>
       </div>

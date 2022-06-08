@@ -1,10 +1,15 @@
+.page-container-forum-show {
+  display: grid;
+  min-height: 100vh;
+  grid-template-rows: auto 1fr auto;
+  background-color: white;
+  justify-content: center;
+}
 .content-container-forum-show{
   padding-top: 2.5em;
-  margin-right: 350px;
-  margin-left: 470px;
+  width: 50vw;
   font-family: Nunito;
   display: flex;
-  flex-wrap: wrap;
   flex-direction: column;
 }
 .forum-fontawesome {
@@ -18,19 +23,34 @@
 .forum-comments {
   margin: 15px;
   padding: 15px;
-  background-color: #FCE1AC;
+  background-color: #f5ecdd;
   border-radius: 10px;
+  border-left: #eeddbe solid 3px;
 }
 .forum-new-comment {
   padding: 15px;
   margin: 15px;
   border-radius: 10px;
-  background-color: #FCD179;
 }
 .forum-entry-principal {
   padding: 15px;
 }
 .forum-new-comment-form {
-  background-color: #FCE1AC;
+  background-color: #FEF0D6;
   border-radius: 10px;
+  border-left: #eeddbe solid 3px;
+}
+.forum-comments-comment {
+  padding: 0px 15px;
+}
+.forum-new-comment-button {
+  font-family: Nunito;
+  background: #D77B3E;
+  color: white;
+  border-radius: 15px;
+  border: #D77B3E solid 1px;
+  padding: 3px 20px;
+}
+.forum-comments-email p {
+  margin-bottom: 10px;
 }
