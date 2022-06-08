@@ -19,6 +19,7 @@
 .forum-entry {
   padding-top: 15px;
   border-top: #D77B3E solid 1px;
+  word-wrap: break-word;
 }
 .forum-comments {
   margin: 15px;
@@ -26,6 +27,7 @@
   background-color: #f5ecdd;
   border-radius: 10px;
   border-left: #eeddbe solid 3px;
+  word-wrap: break-word;
 }
 .forum-new-comment {
   padding: 15px;
@@ -42,6 +44,7 @@
 }
 .forum-comments-comment {
   padding: 0px 15px;
+  max-width: inherit;
 }
 .forum-new-comment-button {
   font-family: Nunito;
