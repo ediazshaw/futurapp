@@ -11,8 +11,8 @@
   <%= f.label "Do you want this entry to be private?" %>
   <%= f.label "It will not be visible for other users in the forum" %>
   <div class="pt-2">
-  <%= f.input_field :private, as: :boolean, as: :radio_buttons %>
+  <%= f.input_field :private, as: :boolean, as: :radio_buttons, boolean_style: :inline %>
   </div>
   <%= f.input :photos, as: :file, input_html: { multiple: true }, label:false %>
-  <%= f.submit "Submit" , class: "card-button-form button-text"%>
+  <%= f.submit "Submit" , class: "card-button-form button-text-home"%>
 <% end %>

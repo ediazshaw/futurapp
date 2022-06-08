@@ -11,11 +11,11 @@
   <%= f.label "Do you want this entry to be private?" %>
   <%= f.label "It will not be visible for other users in the forum" %>
   <div class="pt-2">
-  <%= f.input_field :private, as: :boolean, as: :radio_buttons %>
+  <%= f.input_field :private, as: :boolean, boolean_style: :inline, as: :radio_buttons %>
   </div>
   <%= f.input :photos, as: :file, input_html: { multiple: true }, label:false%>
   <div class="two-button">
-    <%= f.submit "Submit" , class: "card-button-form button-text"%>
-    <a href="<%= entries_path %>#go-today" class="card-button-form button-text">Skip</a>
+    <%= f.submit "Submit" , class: "card-button-form button-text-home"%>
+    <a href="<%= entries_path %>#go-today" class="card-button-form button-text-home">Skip</a>
   </div>
 <% end %>

@@ -32,6 +32,10 @@ body {
   animation: rotation 10s infinite linear;
 }
 
+.no-rotate{
+  animation: rotation 0s infinite linear;
+}
+
 .how-it-works.row {
   display: flex;
 }
