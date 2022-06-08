@@ -5,11 +5,12 @@
   background-color: #D5B78A;
   font-family: Nunito;
   border: 1px solid #D5B78A;
-  height: 50px;
+  padding: 10px;
+  border-radius: 5px;
 }
 .iconify {
-  font-size: 75px;
-  color: #D5B78A;
+  font-size: 35px;
+  color: #943F22;
 }
 #search-by-theme {
   color:#943F22;
@@ -30,11 +31,12 @@
 }
 #search-date.datepicker {
   color:#943F22 !important;
-  background-color: #D5B78A !important;
+  background-color: #e0c59d !important;
   font-family: Nunito !important;
   border: 1px solid #D5B78A;
   margin-right: 15px;
-  height: 50px;
+  padding: 10px;
+  border-radius: 5px;
 }
 #category-prediction:checked + label {
   border: 2px solid #D5B78A;

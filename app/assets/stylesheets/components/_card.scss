@@ -10,6 +10,7 @@
   min-width: 553px;
   min-height: 332px;
   filter: drop-shadow(0px 4px 4px rgba(0, 0, 0, 0.25));
+  padding: 25px;
 }
 
 .card-category__img {
@@ -43,12 +44,13 @@
 }
 
 .card-question-title-question-day {
-  height: 60%;
+  height: 45%;
+  width: 85%;
   position: absolute;
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 800;
-  font-size: 24px;
+  font-size: 20px;
   color: #FFFFFF;
   display: flex;
     text-align: center;
@@ -90,13 +92,13 @@
 
 .card-category__questions {
   margin: auto;
-  width: 173px;
-  height: 40%;
+  width: 85%;
+  height: 45%;
   padding: 15px 5px 5px 5px;
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 20px;
   line-height: 22px;
   color: #D77B3E;
   display: flex;
@@ -178,27 +180,27 @@
 
 .card-button-add-show {
   box-sizing: border-box;
-  width: 105px;
-  height: 20px;
   background: #D77B3E;
   border: 1px solid #FFFFFF;
   border-radius: 30px;
   position: absolute;
-  left: 10px;
-  bottom: 10px;
+  left: 25px;
+  bottom: 25px;
 }
 
 .button-text {
-  font-family: 'Nunito';
-  font-style: normal;
-  font-weight: 400;
-  font-size: 10px;
-  color: #FFFFFF;
-  text-decoration: none;
+    font-family: 'Nunito';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 14px;
+    color: #D77B3E;
+    text-decoration: none;
+    background: white;
+    padding: 4px 20px;
 }
 
 .button-text:hover {
-  color: white;
+  color: #e0a883;
 }
 
 .category-wrapper {
@@ -302,12 +304,13 @@
 .card-text-categories-style {
   font-family: Nunito;
   font-style: Light;
-  font-size: 12px;
+  font-size: 16px;
   line-height: 16px;
   line-height: 100%;
   align-items: Center;
   vertical-align: Top;
-  width: 60px;
+  width: 23%;
+  padding: 5px 15px;
   p {
     margin: 0px;
     width: 76px;
@@ -353,7 +356,7 @@
 
 .category-day-inline {
   display: flex;
-  justify-content: space-around;
+  justify-content: space-between;
 }
 
 .margin-dates-show {
@@ -371,4 +374,10 @@
 .center-question-day-home {
   display: flex;
   align-items: center;
+}
+.modal-lg {
+  max-width: 1100px;
+}
+.card-last-hr {
+  margin-bottom: 50px;
 }
