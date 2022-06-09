@@ -17,14 +17,14 @@ user1.save!
 puts user1.email
 
 user2 = User.new(
-  email: "joana@mail.com",
+  email: "joanamenag@gmail.com",
   password: '123456'
 )
 user2.save!
 puts user2.email
 
 user3 = User.new(
-  email: "marcos@mail.com",
+  email: "mlutterb@gmail.com",
   password: '123456'
 )
 user3.save!
@@ -163,6 +163,30 @@ entry = Entry.new(
   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
   question_day: 0,
   private: false
+)
+entry.save!
+
+entry = Entry.new(
+  category: category,
+  user: user1,
+  theme: "Le Wagon",
+  comment: "This bootcamp is too hard, there is no way I am gonna graduate",
+  created_at: '2022-04-11',
+  remember_date: '2022-06-10',
+  question_day: 0,
+  private: true
+)
+entry.save!
+
+entry = Entry.new(
+  category: category1,
+  user: user1,
+  theme: "Wordle",
+  comment: "We were going to beat Data at wordle every single week",
+  created_at: '2022-05-11',
+  remember_date: '2022-06-01',
+  question_day: 0,
+  private: true
 )
 entry.save!
 QuestionDay.destroy_all
