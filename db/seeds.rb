@@ -141,7 +141,7 @@ questions = ["Do you think houses will be more environmentally friendly in the f
              "Do you want to get married? When will you get married?",
              "Will computers ever take over the world?",
              "Will we ever understand the nature of consciousness?",
-             "Will the entire world one day have adequate health care?"
+             "Conspiracy theory: Are birds real or government drones?"
 ]
 prediction_category = Category.where(category: "Prediction").first
 thought_category = Category.where(category: "Thought").first
@@ -151,7 +151,7 @@ question_day = QuestionDay.create(
   question: questions[0],
   theme: "House environmentally friendly",
   date: '2022-06-09',
-  category: thought_category
+  category: prediction_category
 )
 file = File.open(Rails.root.join('app/assets/images/category/environmentally.jpg'))
 question_day.photo.attach(io: file, filename: "environmentally.jpg", content_type: 'image/jpg')
@@ -203,12 +203,12 @@ question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type:
 
 question_day = QuestionDay.create(
   question: questions[6],
-  theme: "Health care",
+  theme: "Are birds real?",
   date: '2022-06-10',
-  category: prediction_category
+  category: thought_category
 )
-file = File.open(Rails.root.join('app/assets/images/category/healthcare.jpg'))
-question_day.photo.attach(io: file, filename: "healthcare.jpg", content_type: 'image/jpg')
+file = File.open(Rails.root.join('app/assets/images/category/birds.jpg'))
+question_day.photo.attach(io: file, filename: "birds.jpg", content_type: 'image/jpg')
 
 puts "Creating seeds scraped from LongBets"
 CSV.foreach(filepath, headers: :first_row) do |row|
