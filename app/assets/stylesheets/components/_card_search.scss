@@ -29,10 +29,17 @@
   flex-direction: column;
 }
 
-.comment-search{
+.comment-search {
   padding: 5px 20px;
   padding-right: 10px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+}
+
+.comment-entry-search {
   word-wrap: break-word;
+  width: 90%;
 }
 
 .comment-share{
@@ -91,3 +98,7 @@ justify-content: end;
   color: white;
   font-family: "Nunito";
 }
+.share-entry-comment {
+  word-break: break-word;
+}
+
