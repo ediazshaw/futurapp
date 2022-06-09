@@ -9,139 +9,170 @@ Category.destroy_all
 
 puts 'Creating 10 fake users...'
 
-9.times do
-  user = User.new(
-    email: Faker::Internet.email,
-    password: '123456'
-  )
-  user.save!
-  puts user.email
-end
 user1 = User.new(
-  email: "test@mail.com",
+  email: "ediazshaw@gmail.com",
   password: '123456'
 )
 user1.save!
 puts user1.email
 
 user2 = User.new(
-  email: "edu@diaz.com",
+  email: "joana@mail.com",
   password: '123456'
 )
 user2.save!
 puts user2.email
+
+user3 = User.new(
+  email: "marcos@mail.com",
+  password: '123456'
+)
+user3.save!
+puts user3.email
 puts 'Creating fake data...'
 category = Category.create(category: "Thought")
 category1 = Category.create(category: "Prediction")
 category2 = Category.create(category: "Event")
 
-40.times do
-  entry = Entry.new(
-    category: Category.all.sample,
-    user: User.all.sample,
-    theme: Faker::Book.title,
-    comment: Faker::Lorem.paragraphs(number: 5).join(" "),
-    created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-    remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-    question_day: rand(0..1),
-    private: rand(0..1)
-  )
-  entry.save!
-  p entry
-end
 puts 'Finished!'
 
-10.times do
-  entry = Entry.new(
-    category: Category.all.sample,
-    user: user1,
-    theme: Faker::Book.title,
-    comment: Faker::Lorem.paragraphs(number: 5).join(" "),
-    created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-    remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-    question_day: rand(0..1),
-    private: rand(0..1)
-  )
-  entry.save!
-  p entry
-end
 entry = Entry.new(
-  category: Category.all.sample,
+  category: category1,
   user: user1,
   theme: "Nadal Win",
-  comment: Faker::Lorem.paragraphs(number: 5).join(" "),
+  comment: "Nadal will win more Grand Slams than anyone in history",
   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-  question_day: rand(0..1),
+  question_day: 0,
   private: false
 )
 entry.save!
 entry = Entry.new(
-  category: Category.all.sample,
+  category: category,
   user: user1,
   theme: "Nadal Win",
-  comment: Faker::Lorem.paragraphs(number: 5).join(" "),
+  comment: "This guy is unbelievable, how can he still play like this being so injured",
   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-  question_day: rand(0..1),
+  question_day: 0,
   private: false
 )
 entry.save!
 entry = Entry.new(
-  category: Category.all.sample,
+  category: category1,
   user: user1,
   theme: "Going to Mars",
-  comment: Faker::Lorem.paragraphs(number: 5).join(" "),
+  comment: "It is going to be awesome, Elon will be the president and Doeg coin will be the currency",
   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-  question_day: rand(0..1),
+  question_day: 0,
   private: false
 )
 entry.save!
-10.times do
-  entry = Entry.new(
-    category: Category.all.sample,
-    user: user2,
-    theme: Faker::Book.title,
-    comment: Faker::Lorem.paragraphs(number: 5).join(" "),
-    created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-    remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-    question_day: rand(0..1),
-    private: rand(0..1)
-  )
-  entry.save!
-  p entry
-end
+
+
 entry = Entry.new(
-  category: Category.all.sample,
+  category: category1,
   user: user2,
   theme: "Nadal Win",
-  comment: Faker::Lorem.paragraphs(number: 5).join(" "),
+  comment: "He is too old now, he will not win anymore",
   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-  question_day: rand(0..1),
+  question_day: 0,
   private: false
 )
 entry.save!
 entry = Entry.new(
-  category: Category.all.sample,
+  category: category,
   user: user2,
   theme: "Going to Mars",
-  comment: Faker::Lorem.paragraphs(number: 5).join(" "),
+  comment: "I think we are not going to get there never to be honest",
   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-  question_day: rand(0..1),
+  question_day: 0,
+  private: false
+)
+entry.save!
+
+entry = Entry.new(
+  category: category2,
+  user: user3,
+  theme: "Wedding",
+  comment: "It is was the best day of my life but I didn't get to eat anything, I shoud remeber that for  my funeral",
+  created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+  remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+  question_day: 0,
+  private: false
+)
+entry.save!
+
+entry = Entry.new(
+  category: category2,
+  user: user2,
+  theme: "Wedding",
+  comment: "My wedding was great but I have never been more stressed I will help my son for preapering his wedding",
+  created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+  remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+  question_day: 0,
+  private: false
+)
+entry.save!
+
+entry = Entry.new(
+  category: category,
+  user: user1,
+  theme: "Cristiano Ronaldo",
+  comment: "This guy is crazy good but a bit coocky in my opinion",
+  created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+  remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+  question_day: 0,
+  private: false
+)
+entry.save!
+
+entry = Entry.new(
+  category: category,
+  user: user3,
+  theme: "Cristiano Ronaldo",
+  comment: "I wish he was from Brazil",
+  created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+  remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+  question_day: 0,
+  private: false
+)
+entry.save!
+
+entry = Entry.new(
+  category: category2,
+  user: user2,
+  theme: "Politecnica",
+  comment: "This institution is going to die it is so badly organised",
+  created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+  remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+  question_day: 0,
+  private: false
+)
+entry.save!
+
+entry = Entry.new(
+  category: category2,
+  user: user1,
+  theme: "Politecnica",
+  comment: "I dont know how I got out, I thought I was going to be there forever",
+  created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
+  remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
+  question_day: 0,
   private: false
 )
 entry.save!
 QuestionDay.destroy_all
 questions = ["Do you think houses will be more environmentally friendly in the future?",
-             "Where will we get our energy when we run out of oil?",
-             "How will India and China affect the environment in the future?",
-             "Do you want to get married? When will you get married?",
-             "Will computers ever take over the world?",
-             "Will we ever understand the nature of consciousness?",
-             "Conspiracy theory: Are birds real or government drones?"
+  "Where will we get our energy when we run out of oil?",
+  "How will India and China affect the environment in the future?",
+  "Do you want to get married? When will you get married?",
+  "Will computers ever take over the world?",
+  "Will we ever understand the nature of consciousness?",
+  "Conspiracy theory: Are birds real or government drones?"
 ]
 prediction_category = Category.where(category: "Prediction").first
 thought_category = Category.where(category: "Thought").first
@@ -214,14 +245,15 @@ puts "Creating seeds scraped from LongBets"
 CSV.foreach(filepath, headers: :first_row) do |row|
   entry = Entry.new(
     category: Category.all.sample,
-    user: user2,
+    user: user1,
     theme: row['theme'],
     comment: row['comment'],
-    created_at: Faker::Date.between(from: '2022-06-07', to: '2022-06-10'),
+    created_at: Faker::Date.between(from: '2022-06-07', to: '2022-06-14'),
     remember_date: Faker::Date.between(from: '2023-01-01', to: '2023-06-08'),
     question_day: 0,
     private: false
   )
   entry.save!
 end
+
 puts "end of seeds from LongBets"

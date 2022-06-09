@@ -6,7 +6,7 @@ namespace :scrape do
     require "csv"
 
     longbets_array = []
-    10.times do |index|
+    30.times do |index|
       url = "https://longbets.org/#{index+850}/"
       puts url
 
