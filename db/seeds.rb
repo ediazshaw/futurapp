@@ -47,6 +47,18 @@ entry = Entry.new(
   private: false
 )
 entry.save!
+
+entry = Entry.new(
+  category: category1,
+  user: user1,
+  theme: "Wordle",
+  comment: "We were going to beat Data at wordle every single week",
+  created_at: '2022-05-11',
+  remember_date: '2022-06-01',
+  question_day: 0,
+  private: true
+)
+entry.save!
 entry = Entry.new(
   category: category,
   user: user1,
@@ -93,6 +105,7 @@ entry = Entry.new(
   private: false
 )
 entry.save!
+
 
 entry = Entry.new(
   category: category2,
@@ -178,17 +191,6 @@ entry = Entry.new(
 )
 entry.save!
 
-entry = Entry.new(
-  category: category1,
-  user: user1,
-  theme: "Wordle",
-  comment: "We were going to beat Data at wordle every single week",
-  created_at: '2022-05-11',
-  remember_date: '2022-06-01',
-  question_day: 0,
-  private: true
-)
-entry.save!
 QuestionDay.destroy_all
 questions = ["Do you think houses will be more environmentally friendly in the future?",
   "Where will we get our energy when we run out of oil?",
