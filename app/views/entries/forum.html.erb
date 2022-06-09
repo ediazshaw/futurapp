@@ -22,12 +22,16 @@
                   <% entry_themes_duplicated.delete_at(index) %>
               <% end %>
             <% end %>
-            <div class="specific-theme-count d-flex">
-              <h4 class="forum-theme-style"><%= link_to entry.theme, forum_theme_path(entry.theme)%></h4>
-              <div class="forum-number-style">
-                <h4><%= Entry.where(theme:entry.theme).where(private:false).count %></h4>
+            <%= link_to forum_theme_path(entry.theme) do%>
+              <div class="specific-theme-count d-flex">
+                <div class="forum-theme-style-principal">
+                  <h4 class="forum-theme-style"><%= entry.theme %></h4><i class="fa-solid fa-comments forum-fontawesome-principal"></i>
+                </div>
+                <div class="forum-number-style">
+                  <h4><%= Entry.where(theme:entry.theme).where(private:false).count %></h4>
+                </div>
               </div>
-            </div>
+            <% end %>
             <p class="forum-theme-style-subtext"><%= link_to "Everyone is talking about this #{entry.category.category}!", forum_theme_path(entry.theme) %></p>
           <% end %>
         <% end %>
