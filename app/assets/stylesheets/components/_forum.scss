@@ -26,6 +26,12 @@
   width: 100%;
   border-top: 1px solid #943F22;
   padding: 5px 0px;
+  background-color: #FEF0D6;
+}
+
+.forum-theme-style-principal {
+  display: flex;
+  flex-direction: row;
 }
 
 .title-forum{
@@ -93,4 +99,7 @@
     text-decoration: none;
     color:#943F22;
   }
+}
+.forum-fontawesome-principal {
+  color: #943F22;
 }
