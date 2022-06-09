@@ -60,21 +60,21 @@
         <% end %>
       </div>
       <!-- Modal -->
-<div class="modal fade" id="exampleModal<%= entry.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-  <div class="modal-dialog">
-    <div class="modal-content">
-      <div class="modal-header modal-header-search">
-        <h5 class="modal-title" id="exampleModalLabel">Copy this text for sharing</h5>
-        <button type="button" class="btn-close btn-close-search" data-bs-dismiss="modal" aria-label="Close"></button>
-      </div>
-      <div class="modal-body modal-body-search">
-        <p><%= entry.comment %></p>
-        <p>Creation Date: <%= entry.created_at.strftime("%d-%b-%Y") %></p>
-        <p>Predicted Date: <%= entry.remember_date.strftime("%d-%b-%Y") %></p>
-        <p>#Futurapp #<%= entry.theme.gsub(/\s+/, '') %> #<%= entry.theme.gsub(/\s+/, '') %>Futurapp</p>
-      </div>
-      <div class="modal-footer modal-footer-search"> </div>
-       </div>
+      <div class="modal fade" id="exampleModal<%= entry.id %>" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog">
+          <div class="modal-content">
+            <div class="modal-header modal-header-search">
+              <h5 class="modal-title" id="exampleModalLabel">Copy this text for sharing</h5>
+              <button type="button" class="btn-close btn-close-search btn-close-white" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body modal-body-search">
+              <p><%= entry.comment %></p>
+              <p>Creation Date: <%= entry.created_at.strftime("%d-%b-%Y") %></p>
+              <p>Predicted Date: <%= entry.remember_date.strftime("%d-%b-%Y") %></p>
+              <p>#Futurapp #<%= entry.theme.gsub(/\s+/, '') %> #<%= entry.theme.gsub(/\s+/, '') %>Futurapp</p>
+            </div>
+            <div class="modal-footer modal-footer-search"> </div>
+          </div>
         </div>
       </div>
     <% end %>
