@@ -16,8 +16,17 @@
   <%= f.input_field :private, as: :boolean, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper-radio-button' %>
   </div>
   <%= f.input :photos, as: :file, input_html: { multiple: true }, label:false%>
-  <div class="two-button">
-    <%= f.submit "Submit" , class: "card-button-form button-text-home"%>
-    <a href="<%= entries_path %>#go-today" class="card-button-form button-text-home">Skip</a>
-  </div>
+    <div>
+      <% if !user_signed_in? %>
+        <div class="two-button">
+        <a href="<%= new_user_session_path %>" class="card-button-form button-text-home">Log in</a>
+        <a href="<%= new_user_registration_path %>" class="card-button-form button-text-home">Sign up</a>
+      </div>
+      <% else %>
+      <div class="two-button">
+        <%= f.submit "Submit" , class: "card-button-form button-text-home"%>
+        <a href="<%= entries_path %>#go-today" class="card-button-form button-text-home">Skip</a>
+      </div>
+      <% end %>
+    </div>
 <% end %>
