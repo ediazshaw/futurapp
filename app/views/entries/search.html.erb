@@ -28,19 +28,23 @@
           <input type="submit" hidden />
       <% end %>
     <% @entries.each do |entry| %>
-      <div class="card-search" id="<%= entry.id %>">
+      <div class="card-search" id="<%= entry.id %>" data-controller="edit-resource" data-edit-resource-target="card">
         <div class="title-date d-flex">
           <div class="title-search" title="Theme">
             <h6 title="Category"><%= entry.category.category %>&nbsp<%= "& Question of the Day" if entry.question_day %>&nbsp<%= "& Public" if !entry.private %></h6>
             <h3 title="Theme"><%= entry.theme %></h3>
           </div>
-          <div class="date-search d-flex">
+          <div class="date-search d-flex" data-edit-resource-target="infos">
             <div class="myDIV"><p><i class="fa-solid fa-pen-to-square"></i>&nbsp<%= entry.created_at.strftime("%d-%b-%Y") %></p></div>
             <div class="hide">Creation Date</div>
             <div class="myDIV">
               <p><i class="fa-solid fa-calendar-check"></i>&nbsp<%= entry.remember_date.strftime("%d-%b-%Y") %></p>
             </div>
             <div class="hide">Predicted Date</div>
+            <div data-action="click->edit-resource#displayForm">Edit</div>
+            <%= simple_form_for entry, 'data-resource-target': 'form', html: { class: 'd-none', data: { edit_resource_target: 'form', action: 'submit->edit_resource#update' } } do |f| %>
+              <%= f.input_field :private, as: :boolean, as: :radio_buttons, collection_wrapper_tag: 'div', collection_wrapper_class: 'category-wrapper-radio-button' %>
+            <% end %>
           </div>
         </div>
         <div class="comment-share d-flex">
