@@ -23,6 +23,10 @@ class EntriesController < ApplicationController
       redirect_to entries_path(anchor: 'go-today')
     else
       render action: :new
+      # respond_to do |format|
+      #   format.html {}
+      #   format.text { render partial: "entries/form", formats: [:html] }
+      # end
     end
   end
 
