@@ -23,7 +23,7 @@ class EntriesController < ApplicationController
     if @entry.save
       redirect_to entries_path(anchor: 'go-today')
     else
-      render "pages/home"
+      render :new
     end
   end
 
