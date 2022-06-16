@@ -226,63 +226,169 @@ question_day = QuestionDay.create(
 file = File.open(Rails.root.join('app/assets/images/category/birds.jpg'))
 question_day.photo.attach(io: file, filename: "birds.jpg", content_type: 'image/jpg')
 
-question_day = QuestionDay.create(
-  question: question_introspective[0],
-  theme: "Introspection: #{question_introspective[0]}",
-  date: '2022-06-16',
-  category: prediction_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/environmentally.jpg'))
-question_day.photo.attach(io: file, filename: "environmentally.jpg", content_type: 'image/jpg')
+# question_day = QuestionDay.create(
+#   question: question_introspective[0],
+#   theme: "Introspection: #{question_introspective[0]}",
+#   date: '2022-06-16',
+#   category: prediction_category
+# )
+# file = File.open(Rails.root.join('app/assets/images/category/environmentally.jpg'))
+# question_day.photo.attach(io: file, filename: "environmentally.jpg", content_type: 'image/jpg')
 
-question_day = QuestionDay.create(
-  question: questions[1],
-  theme: "The world without oil",
-  date: '2022-06-17',
-  category: prediction_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/oil.jpg'))
-question_day.photo.attach(io: file, filename: "oil.jpg", content_type: 'image/jpg')
+# question_day = QuestionDay.create(
+#   question: questions[1],
+#   theme: "The world without oil",
+#   date: '2022-06-17',
+#   category: prediction_category
+# )
+# file = File.open(Rails.root.join('app/assets/images/category/oil.jpg'))
+# question_day.photo.attach(io: file, filename: "oil.jpg", content_type: 'image/jpg')
 
-question_day = QuestionDay.create(
-  question: questions[2],
-  theme: "Development of China and India",
-  date: '2022-06-18',
-  category: prediction_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/development.jpg'))
-question_day.photo.attach(io: file, filename: "development.jpg", content_type: 'image/jpg')
+# question_day = QuestionDay.create(
+#   question: questions[2],
+#   theme: "Development of China and India",
+#   date: '2022-06-18',
+#   category: prediction_category
+# )
+# file = File.open(Rails.root.join('app/assets/images/category/development.jpg'))
+# question_day.photo.attach(io: file, filename: "development.jpg", content_type: 'image/jpg')
 
-question_day = QuestionDay.create(
-  question: questions[3],
-  theme: "Get married",
-  date: '2022-06-19',
-  category: event_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/marriage.jpg'))
-question_day.photo.attach(io: file, filename: "marriage.jpg", content_type: 'image/jpg')
+# question_day = QuestionDay.create(
+#   question: questions[3],
+#   theme: "Get married",
+#   date: '2022-06-19',
+#   category: event_category
+# )
+# file = File.open(Rails.root.join('app/assets/images/category/marriage.jpg'))
+# question_day.photo.attach(io: file, filename: "marriage.jpg", content_type: 'image/jpg')
 
-question_day = QuestionDay.create(
-  question: questions[4],
-  theme: "Computers taking the world",
-  date: '2022-06-20',
-  category: prediction_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/computer.jpg'))
-question_day.photo.attach(io: file, filename: "computer.jpg", content_type: 'image/jpg')
+# question_day = QuestionDay.create(
+#   question: questions[4],
+#   theme: "Computers taking the world",
+#   date: '2022-06-20',
+#   category: prediction_category
+# )
+# file = File.open(Rails.root.join('app/assets/images/category/computer.jpg'))
+# question_day.photo.attach(io: file, filename: "computer.jpg", content_type: 'image/jpg')
 
-question_day = QuestionDay.create(
-  question: questions[5],
-  theme: "Consciousness",
-  date: '2022-06-21',
-  category: thought_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
-question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+# question_day = QuestionDay.create(
+#   question: questions[5],
+#   theme: "Consciousness",
+#   date: '2022-06-21',
+#   category: thought_category
+# )
+# file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
+# question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
 
 ##############################################################################################################
-# Creating questions for a year
+QuestionDay.destroy_all
+# Creating questions for 70 days
+# IMPORTANT ONLY RUN SEEDS ON THURSDAYS OR YOU WILL HAVE TO CHANGE THE CODE FOR DATE
+# Mondays
+a = 0
+question_introspective.first(10).each do |introspective|
+  question_day = QuestionDay.create(
+    question: introspective,
+    theme: "Introspection: #{introspective}",
+    date: (Date.today - 3 + a).strftime("%Y-%m-%d"),
+    category: thought_category
+  )
+  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
+  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  p "created instrospection question"
+  a += 7
+end
 
+# Tuesdays
+b = 0
+question_unanswerable.first(10).each do |unanswerable|
+  question_day = QuestionDay.create(
+    question: unanswerable,
+    theme: "Mistery: #{unanswerable}",
+    date: (Date.today - 2 + b).strftime("%Y-%m-%d"),
+    category: prediction_category
+  )
+  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
+  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  p "created unanswerable question"
+  b += 7
+end
+
+# Wednesdays
+c = 0
+question_future_total.first(10).each do |future_total|
+  question_day = QuestionDay.create(
+    question: future_total,
+    theme: "Mistery: #{future_total}",
+    date: (Date.today - 1 + c).strftime("%Y-%m-%d"),
+    category: prediction_category
+  )
+  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
+  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  p "created future_question_future_total question"
+  c += 7
+end
+
+# Thrusdays
+d = 0
+question_preference.first(10).each do |preference|
+  question_day = QuestionDay.create(
+    question: preference,
+    theme: "Preference: #{preference}",
+    date: (Date.today + d).strftime("%Y-%m-%d"),
+    category: thought_category
+  )
+  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
+  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  p "created preference question"
+
+  d += 7
+end
+
+# Fridays
+g = 0
+question_would_you_rather.first(10).each do |would_you_rather|
+  question_day = QuestionDay.create(
+    question: would_you_rather,
+    theme: "Would you Rather: #{would_you_rather}",
+    date: (Date.today + 1 + g).strftime("%Y-%m-%d"),
+    category: thought_category
+  )
+  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
+  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  p "created would_you_rather question"
+  g += 7
+end
+
+# Saturdays
+e = 0
+question_trivia.first(10).each do |trivia|
+  question_day = QuestionDay.create(
+    question: trivia,
+    theme: "Trivia: #{trivia}",
+    date: (Date.today + 2 + e).strftime("%Y-%m-%d"),
+    category: thought_category
+  )
+  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
+  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  p "created trivia question"
+  e += 7
+end
+
+# Sundays
+f = 0
+question_family.first(10).each do |family|
+  question_day = QuestionDay.create(
+    question: "Ask your family: #{family}",
+    theme: "Family: #{family}",
+    date: (Date.today + 3 + f).strftime("%Y-%m-%d"),
+    category: thought_category
+  )
+  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
+  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  p "created family question"
+  f += 7
+end
 
 #############################################################################################################
 
