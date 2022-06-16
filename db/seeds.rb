@@ -217,14 +217,6 @@ prediction_category = Category.where(category: "Prediction").first
 thought_category = Category.where(category: "Thought").first
 event_category = Category.where(category: "Event").first
 
-question_day = QuestionDay.create(
-  question: questions[6],
-  theme: "Are birds real?",
-  date: '2022-06-10',
-  category: thought_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/birds.jpg'))
-question_day.photo.attach(io: file, filename: "birds.jpg", content_type: 'image/jpg')
 
 # question_day = QuestionDay.create(
 #   question: question_introspective[0],
@@ -263,25 +255,36 @@ question_day.photo.attach(io: file, filename: "birds.jpg", content_type: 'image/
 # question_day.photo.attach(io: file, filename: "marriage.jpg", content_type: 'image/jpg')
 
 # question_day = QuestionDay.create(
-#   question: questions[4],
-#   theme: "Computers taking the world",
-#   date: '2022-06-20',
-#   category: prediction_category
-# )
-# file = File.open(Rails.root.join('app/assets/images/category/computer.jpg'))
-# question_day.photo.attach(io: file, filename: "computer.jpg", content_type: 'image/jpg')
+  #   question: questions[4],
+  #   theme: "Computers taking the world",
+  #   date: '2022-06-20',
+  #   category: prediction_category
+  # )
+  # file = File.open(Rails.root.join('app/assets/images/category/computer.jpg'))
+  # question_day.photo.attach(io: file, filename: "computer.jpg", content_type: 'image/jpg')
 
-# question_day = QuestionDay.create(
-#   question: questions[5],
-#   theme: "Consciousness",
-#   date: '2022-06-21',
-#   category: thought_category
-# )
-# file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
-# question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  # question_day = QuestionDay.create(
+    #   question: questions[5],
+    #   theme: "Consciousness",
+    #   date: '2022-06-21',
+    #   category: thought_category
+    # )
+    # file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
+    # question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
 
-##############################################################################################################
-QuestionDay.destroy_all
+    ##############################################################################################################
+    QuestionDay.destroy_all
+
+    # If everything fails this one shows
+    question_day = QuestionDay.create(
+      question: questions[6],
+      theme: "Are birds real?",
+      date: '2022-06-10',
+      category: thought_category
+    )
+    file = File.open(Rails.root.join('app/assets/images/category/birds.jpg'))
+    question_day.photo.attach(io: file, filename: "birds.jpg", content_type: 'image/jpg')
+
 # Creating questions for 70 days
 # IMPORTANT ONLY RUN SEEDS ON THURSDAYS OR YOU WILL HAVE TO CHANGE THE CODE FOR DATE
 # Mondays
@@ -293,8 +296,8 @@ question_introspective.first(10).each do |introspective|
     date: (Date.today - 3 + a).strftime("%Y-%m-%d"),
     category: thought_category
   )
-  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
-  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  file = File.open(Rails.root.join('app/assets/images/category/introspective.jpg'))
+  question_day.photo.attach(io: file, filename: "introspective.jpg", content_type: 'image/jpg')
   p "created instrospection question"
   a += 7
 end
@@ -308,8 +311,8 @@ question_unanswerable.first(10).each do |unanswerable|
     date: (Date.today - 2 + b).strftime("%Y-%m-%d"),
     category: prediction_category
   )
-  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
-  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  file = File.open(Rails.root.join('app/assets/images/category/mistery.jpg'))
+  question_day.photo.attach(io: file, filename: "mistery.jpg", content_type: 'image/jpg')
   p "created unanswerable question"
   b += 7
 end
@@ -323,8 +326,8 @@ question_future_total.first(10).each do |future_total|
     date: (Date.today - 1 + c).strftime("%Y-%m-%d"),
     category: prediction_category
   )
-  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
-  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  file = File.open(Rails.root.join('app/assets/images/category/future.jpg'))
+  question_day.photo.attach(io: file, filename: "future.jpg", content_type: 'image/jpg')
   p "created future_question_future_total question"
   c += 7
 end
@@ -338,8 +341,8 @@ question_preference.first(10).each do |preference|
     date: (Date.today + d).strftime("%Y-%m-%d"),
     category: thought_category
   )
-  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
-  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  file = File.open(Rails.root.join('app/assets/images/category/preference.jpg'))
+  question_day.photo.attach(io: file, filename: "preference.jpg", content_type: 'image/jpg')
   p "created preference question"
 
   d += 7
@@ -354,8 +357,8 @@ question_would_you_rather.first(10).each do |would_you_rather|
     date: (Date.today + 1 + g).strftime("%Y-%m-%d"),
     category: thought_category
   )
-  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
-  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  file = File.open(Rails.root.join('app/assets/images/category/wyr.png'))
+  question_day.photo.attach(io: file, filename: "wyr.png", content_type: 'image/png')
   p "created would_you_rather question"
   g += 7
 end
@@ -369,8 +372,8 @@ question_trivia.first(10).each do |trivia|
     date: (Date.today + 2 + e).strftime("%Y-%m-%d"),
     category: thought_category
   )
-  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
-  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  file = File.open(Rails.root.join('app/assets/images/category/trivia.jpg'))
+  question_day.photo.attach(io: file, filename: "trivia.jpg", content_type: 'image/jpg')
   p "created trivia question"
   e += 7
 end
@@ -384,8 +387,8 @@ question_family.first(10).each do |family|
     date: (Date.today + 3 + f).strftime("%Y-%m-%d"),
     category: thought_category
   )
-  file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
-  question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+  file = File.open(Rails.root.join('app/assets/images/category/family.jpg'))
+  question_day.photo.attach(io: file, filename: "family.jpg", content_type: 'image/jpg')
   p "created family question"
   f += 7
 end
