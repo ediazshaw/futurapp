@@ -1,11 +1,291 @@
 require "faker"
 require "csv"
 require "open-uri"
+require "nokogiri"
 
 filepath = "./db/scrape.csv"
 
-# User.destroy_all
-# Category.destroy_all
+# Here we will create the question of the day.
+# Twice a week we will create the same question for every year.
+# It will be a thought so they can see how their thoughts about certain personal subjects evolve throught the years.
+# The other five days of the week we will ask questions about the future different each day (they may be repeated in
+# the future if they are still relevant)
+# On specific important dates such as christmas we will have an event as question of the day
+
+####################################################################################################
+# Scrapping Questions: There are seven topics of questions. One for each day of the week.
+# Introspective question, Unanswerable question, Future question, Preference/Favourite question,
+# Trivia Question, AskYourFamily question and Would you Rather question
+
+questions = ["Do you think houses will be more environmentally friendly in the future?",
+  "Where will we get our energy when we run out of oil?",
+  "How will India and China affect the environment in the future?",
+  "Do you want to get married? When will you get married?",
+  "Will computers ever take over the world?",
+  "Will we ever understand the nature of consciousness?",
+  "Conspiracy theory: Are birds real or government drones?"
+]
+
+question_introspective_dirt1 = []
+question_introspective = []
+# Parsing question_introspective
+url = "https://bucketlistjourney.net/365-thought-provoking-questions-answered/"
+html_file = URI.open(url).read
+html_doc = Nokogiri::HTML(html_file)
+
+html_doc.search("h3").each do |element|
+  question_introspective_dirt1 << element.text.strip
+end
+question_introspective_dirt1.pop(2)
+question_introspective_dirt1.delete_at(90)
+question_introspective_dirt1.each do |elem|
+  m = elem.match(/(\d*. ?)(.*)/)
+  question_introspective << m[2]
+end
+
+question_unanswerable_dirt1 = []
+question_unanswerable = []
+# Parsing question_unanswerable
+url2 = "https://icebreakerideas.com/unanswerable-questions/"
+html_file2 = URI.open(url2).read
+html_doc2 = Nokogiri::HTML(html_file2)
+
+html_doc2.search("li").each do |element|
+  question_unanswerable_dirt1 << element.text.strip
+end
+# question_unanswerable_dirt1.pop(2)
+# question_unanswerable_dirt1.delete_at(90)
+# question_unanswerable_dirt1
+question_unanswerable_dirt1.each do |elem|
+  if elem.include?('?')
+    question_unanswerable << elem
+  end
+end
+question_unanswerable.pop(4)
+
+question_future_dirt1 = []
+question_future = []
+# Parsing question_future
+url3 = "https://www.eslconversationquestions.com/future/"
+html_file3 = URI.open(url3).read
+html_doc3 = Nokogiri::HTML(html_file3)
+
+html_doc3.search("p").each do |element|
+  question_future_dirt1 << element.text.strip
+end
+# question_future_dirt1.pop(2)
+# question_future_dirt1.delete_at(90)
+# question_future_dirt1
+question_future_dirt1.each do |elem|
+  if elem.include?('?')
+    question_future << elem
+  end
+end
+# question_future.pop(4)
+
+question_future2_dirt1 = []
+question_future2 = []
+# Parsing question_future2
+url4 = "https://www.scientificamerican.com/article/20-big-questions-about-the-future-of-humanity/"
+html_file4 = URI.open(url4).read
+html_doc4 = Nokogiri::HTML(html_file4)
+
+html_doc4.search("p strong").each do |element|
+  question_future2_dirt1 << element.text.strip
+end
+# question_future2_dirt1.pop(2)
+# question_future2_dirt1.delete_at(90)
+# question_future2_dirt1
+question_future2_dirt1.each do |elem|
+  if elem.include?('?')
+    m4 = elem.match(/(\d*. ?)(.*)/)
+  question_future2 << m4[2]
+  end
+end
+question_future2.pop(1)
+
+question_future3_dirt1 = []
+question_future3 = []
+# Parsing question_future3
+url5 = "http://www.esldiscussiontopics.com/future.html"
+html_file5 = URI.open(url5).read
+html_doc5 = Nokogiri::HTML(html_file5)
+
+html_doc5.search("li").each do |element|
+  question_future3_dirt1 << element.text.strip
+end
+# question_future3_dirt1.pop(2)
+# question_future3_dirt1.delete_at(90)
+# question_future3_dirt1
+question_future3_dirt1.each do |elem|
+  if elem.include?('?')
+    question_future3 << elem
+  end
+end
+question_future_total = question_future + question_future2 + question_future3
+
+question_preference_dirt1 = []
+question_preference = []
+# Parsing question_preference
+url6 = "https://blendtw.com/favorite-things-questions/"
+html_file6 = URI.open(url6).read
+html_doc6 = Nokogiri::HTML(html_file6)
+
+html_doc6.search("li").each do |element|
+  question_preference_dirt1 << element.text.strip
+  # p element.text.strip
+end
+# question_preference_dirt1.pop(2)
+# question_preference_dirt1.delete_at(90)
+question_preference_dirt1.each do |elem|
+  if elem.include?('?')
+    question_preference << elem
+  end
+end
+question_preference.delete_at(0)
+question_preference.delete_at(0)
+
+question_trivia_dirt1 = []
+question_trivia = []
+# Parsing question_trivia
+url7 = "https://www.scarymommy.com/lifestyle/best-trivia-questions-answers/"
+html_file7 = URI.open(url7).read
+html_doc7 = Nokogiri::HTML(html_file7)
+
+html_doc7.search("p").each do |element|
+  question_trivia_dirt1 << element.text.strip
+  # p element.text.strip
+end
+# question_trivia_dirt1.pop(2)
+# question_trivia_dirt1.delete_at(90)
+question_trivia_dirt1.each do |elem|
+  if elem.include?('?')
+    m7 = elem.match(/(\d*. ?)(.*\?)/)
+  question_trivia << m7[2]
+  end
+end
+question_trivia.delete_at(0)
+question_trivia.delete_at(0)
+
+question_family_dirt1 = []
+question_family = []
+# Parsing question_family
+url8 = "https://www.momjunction.com/articles/questions-to-ask-your-grandparents_00762718/"
+html_file8 = URI.open(url8).read
+html_doc8 = Nokogiri::HTML(html_file8)
+
+html_doc8.search("li").each do |element|
+  question_family_dirt1 << element.text.strip
+  # p element.text.strip
+end
+# question_family_dirt1.pop(2)
+# question_family_dirt1.delete_at(90)
+question_family_dirt1.each do |elem|
+  if elem.include?('?')
+    question_family << elem
+  end
+end
+# question_family.delete_at(0)
+# question_family.delete_at(0)
+question_family
+
+question_would_you_rather_dirt1 = []
+question_would_you_rather = []
+# Parsing question_would_you_rather
+url9 = "https://parade.com/964027/parade/would-you-rather-questions/"
+html_file9 = URI.open(url9).read
+html_doc9 = Nokogiri::HTML(html_file9)
+
+html_doc9.search("p").each do |element|
+  question_would_you_rather_dirt1 << element.text.strip
+  # p element.text.strip
+end
+# question_would_you_rather_dirt1.pop(2)
+# question_would_you_rather_dirt1.delete_at(90)
+question_would_you_rather_dirt1.each do |elem|
+  if elem.include?('?')
+    m9 = elem.match(/(\d*. ?)(.*)/)
+    question_would_you_rather << m9[2]
+  end
+end
+question_would_you_rather.delete_at(0)
+question_would_you_rather.delete_at(0)
+question_would_you_rather.pop(2)
+###############################################################################################################
+
+prediction_category = Category.where(category: "Prediction").first
+thought_category = Category.where(category: "Thought").first
+event_category = Category.where(category: "Event").first
+
+question_day = QuestionDay.create(
+  question: questions[6],
+  theme: "Are birds real?",
+  date: '2022-06-10',
+  category: thought_category
+)
+file = File.open(Rails.root.join('app/assets/images/category/birds.jpg'))
+question_day.photo.attach(io: file, filename: "birds.jpg", content_type: 'image/jpg')
+
+question_day = QuestionDay.create(
+  question: question_introspective[0],
+  theme: "Introspection: #{question_introspective[0]}",
+  date: '2022-06-16',
+  category: prediction_category
+)
+file = File.open(Rails.root.join('app/assets/images/category/environmentally.jpg'))
+question_day.photo.attach(io: file, filename: "environmentally.jpg", content_type: 'image/jpg')
+
+question_day = QuestionDay.create(
+  question: questions[1],
+  theme: "The world without oil",
+  date: '2022-06-17',
+  category: prediction_category
+)
+file = File.open(Rails.root.join('app/assets/images/category/oil.jpg'))
+question_day.photo.attach(io: file, filename: "oil.jpg", content_type: 'image/jpg')
+
+question_day = QuestionDay.create(
+  question: questions[2],
+  theme: "Development of China and India",
+  date: '2022-06-18',
+  category: prediction_category
+)
+file = File.open(Rails.root.join('app/assets/images/category/development.jpg'))
+question_day.photo.attach(io: file, filename: "development.jpg", content_type: 'image/jpg')
+
+question_day = QuestionDay.create(
+  question: questions[3],
+  theme: "Get married",
+  date: '2022-06-19',
+  category: event_category
+)
+file = File.open(Rails.root.join('app/assets/images/category/marriage.jpg'))
+question_day.photo.attach(io: file, filename: "marriage.jpg", content_type: 'image/jpg')
+
+question_day = QuestionDay.create(
+  question: questions[4],
+  theme: "Computers taking the world",
+  date: '2022-06-20',
+  category: prediction_category
+)
+file = File.open(Rails.root.join('app/assets/images/category/computer.jpg'))
+question_day.photo.attach(io: file, filename: "computer.jpg", content_type: 'image/jpg')
+
+question_day = QuestionDay.create(
+  question: questions[5],
+  theme: "Consciousness",
+  date: '2022-06-21',
+  category: thought_category
+)
+file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
+question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
+
+##############################################################################################################
+# Creating questions for a year
+
+
+#############################################################################################################
+
 
 # puts 'Creating 10 fake users...'
 
@@ -35,237 +315,6 @@ filepath = "./db/scrape.csv"
 # category2 = Category.create(category: "Event")
 
 # puts 'Finished!'
-
-# entry = Entry.new(
-#   category: category1,
-#   user: user1,
-#   theme: "Nadal Win",
-#   comment: "Nadal will win more Grand Slams than anyone in history",
-#   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-#   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-#   question_day: 0,
-#   private: false
-# )
-# entry.save!
-
-# entry = Entry.new(
-#   category: category1,
-#   user: user1,
-#   theme: "Wordle",
-#   comment: "We were going to beat Data at wordle every single week",
-#   created_at: '2022-05-11',
-#   remember_date: '2022-06-01',
-#   question_day: 0,
-#   private: true
-# )
-# entry.save!
-# entry = Entry.new(
-#   category: category,
-#   user: user1,
-#   theme: "Nadal Win",
-#   comment: "This guy is unbelievable, how can he still play like this being so injured",
-#   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-#   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-#   question_day: 0,
-#   private: false
-# )
-# entry.save!
-# entry = Entry.new(
-#   category: category1,
-#   user: user1,
-#   theme: "Going to Mars",
-#   comment: "It is going to be awesome, Elon will be the president and Doeg coin will be the currency",
-#   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-#   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-#   question_day: 0,
-#   private: false
-# )
-# entry.save!
-
-
-# entry = Entry.new(
-#   category: category1,
-#   user: user2,
-#   theme: "Nadal Win",
-#   comment: "He is too old now, he will not win anymore",
-#   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-#   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-#   question_day: 0,
-#   private: false
-# )
-# entry.save!
-# entry = Entry.new(
-#   category: category,
-#   user: user2,
-#   theme: "Going to Mars",
-#   comment: "I think we are not going to get there never to be honest",
-#   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-#   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-#   question_day: 0,
-#   private: false
-# )
-# entry.save!
-
-
-# entry = Entry.new(
-#   category: category2,
-#   user: user3,
-#   theme: "Wedding",
-#   comment: "It is was the best day of my life but I didn't get to eat anything, I shoud remeber that for  my funeral",
-#   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-#   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-#   question_day: 0,
-#   private: false
-# )
-# entry.save!
-
-# entry = Entry.new(
-#   category: category2,
-#   user: user2,
-#   theme: "Wedding",
-#   comment: "My wedding was great but I have never been more stressed I will help my son for preapering his wedding",
-#   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-#   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-#   question_day: 0,
-#   private: false
-# )
-# entry.save!
-
-# entry = Entry.new(
-#   category: category,
-#   user: user1,
-#   theme: "Cristiano Ronaldo",
-#   comment: "This guy is crazy good but a bit coocky in my opinion",
-#   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-#   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-#   question_day: 0,
-#   private: false
-# )
-# entry.save!
-
-# entry = Entry.new(
-#   category: category,
-#   user: user3,
-#   theme: "Cristiano Ronaldo",
-#   comment: "I wish he was from Brazil",
-#   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-#   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-#   question_day: 0,
-#   private: false
-# )
-# entry.save!
-
-# entry = Entry.new(
-#   category: category2,
-#   user: user2,
-#   theme: "Politecnica",
-#   comment: "This institution is going to die it is so badly organised",
-#   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-#   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-#   question_day: 0,
-#   private: false
-# )
-# entry.save!
-
-# entry = Entry.new(
-#   category: category2,
-#   user: user1,
-#   theme: "Politecnica",
-#   comment: "I dont know how I got out, I thought I was going to be there forever",
-#   created_at: Faker::Date.between(from: '2022-06-01', to: '2022-06-07'),
-#   remember_date: Faker::Date.between(from: '2022-06-07', to: '2032-09-25'),
-#   question_day: 0,
-#   private: false
-# )
-# entry.save!
-
-# entry = Entry.new(
-#   category: category,
-#   user: user1,
-#   theme: "Le Wagon",
-#   comment: "This bootcamp is too hard, there is no way I am gonna graduate",
-#   created_at: '2022-04-11',
-#   remember_date: '2022-06-10',
-#   question_day: 0,
-#   private: true
-# )
-# entry.save!
-
-# QuestionDay.destroy_all
-questions = ["Do you think houses will be more environmentally friendly in the future?",
-  "Where will we get our energy when we run out of oil?",
-  "How will India and China affect the environment in the future?",
-  "Do you want to get married? When will you get married?",
-  "Will computers ever take over the world?",
-  "Will we ever understand the nature of consciousness?",
-  "Conspiracy theory: Are birds real or government drones?"
-]
-prediction_category = Category.where(category: "Prediction").first
-thought_category = Category.where(category: "Thought").first
-event_category = Category.where(category: "Event").first
-
-question_day = QuestionDay.create(
-  question: questions[0],
-  theme: "House environmentally friendly",
-  date: '2022-06-09',
-  category: prediction_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/environmentally.jpg'))
-question_day.photo.attach(io: file, filename: "environmentally.jpg", content_type: 'image/jpg')
-
-question_day = QuestionDay.create(
-  question: questions[1],
-  theme: "The world without oil",
-  date: '2022-06-04',
-  category: prediction_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/oil.jpg'))
-question_day.photo.attach(io: file, filename: "oil.jpg", content_type: 'image/jpg')
-
-question_day = QuestionDay.create(
-  question: questions[2],
-  theme: "Development of China and India",
-  date: '2022-06-05',
-  category: prediction_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/development.jpg'))
-question_day.photo.attach(io: file, filename: "development.jpg", content_type: 'image/jpg')
-
-question_day = QuestionDay.create(
-  question: questions[3],
-  theme: "Get married",
-  date: '2022-06-06',
-  category: event_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/marriage.jpg'))
-question_day.photo.attach(io: file, filename: "marriage.jpg", content_type: 'image/jpg')
-
-question_day = QuestionDay.create(
-  question: questions[4],
-  theme: "Computers taking the world",
-  date: '2022-06-07',
-  category: prediction_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/computer.jpg'))
-question_day.photo.attach(io: file, filename: "computer.jpg", content_type: 'image/jpg')
-
-question_day = QuestionDay.create(
-  question: questions[5],
-  theme: "Consciousness",
-  date: '2022-06-08',
-  category: thought_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/consciousness.jpg'))
-question_day.photo.attach(io: file, filename: "consciousness.jpg", content_type: 'image/jpg')
-
-question_day = QuestionDay.create(
-  question: questions[6],
-  theme: "Are birds real?",
-  date: '2022-06-10',
-  category: thought_category
-)
-file = File.open(Rails.root.join('app/assets/images/category/birds.jpg'))
-question_day.photo.attach(io: file, filename: "birds.jpg", content_type: 'image/jpg')
 
 # puts "Creating seeds scraped from LongBets"
 # CSV.foreach(filepath, headers: :first_row) do |row|
