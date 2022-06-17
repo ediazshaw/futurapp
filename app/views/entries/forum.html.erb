@@ -25,7 +25,7 @@
             <%= link_to forum_theme_path(entry.theme) do%>
               <div class="specific-theme-count d-flex">
                 <div class="forum-theme-style-principal">
-                  <h4 class="forum-theme-style"><%= entry.theme %></h4><i class="fa-solid fa-comments forum-fontawesome-principal"></i>
+                  <i class="fa-solid fa-comments forum-fontawesome-principal"></i><h4 class="forum-theme-style"><%= entry.theme %></h4>
                 </div>
                 <div class="forum-number-style">
                   <h4><%= Entry.where(theme:entry.theme).where(private:false).count %></h4>
