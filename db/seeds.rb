@@ -395,25 +395,8 @@ end
 
 #############################################################################################################
 
-
-# puts 'Creating 10 fake users...'
-
-# user1 = User.new(
-#   email: "ediazshaw@gmail.com",
-#   password: '123456'
-# )
-# user1.save!
-# puts user1.email
-
-# user2 = User.new(
-#   email: "joanamenag@gmail.com",
-#   password: '123456'
-# )
-# user2.save!
-# puts user2.email
-
 # user3 = User.new(
-#   email: "mlutterb@gmail.com",
+#   email: "test@mail.com",
 #   password: '123456'
 # )
 # user3.save!
