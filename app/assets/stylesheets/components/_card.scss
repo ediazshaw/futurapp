@@ -44,21 +44,22 @@
 }
 
 .card-question-title-question-day {
-  height: 45%;
-  width: 85%;
-  position: absolute;
+  // height: 45%;
+  // width: 85%;
+  // position: absolute;
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 800;
   font-size: 20px;
-  color: #FFFFFF;
-  display: flex;
-    text-align: center;
-    /* justify-content: center; */
-    align-items: center;
-    width: 40%;
-    justify-content: center;
-    left: 0;
+  color: #D77B3E;
+  padding-bottom: 5px;
+  // display: flex;
+  //   text-align: center;
+  //   /* justify-content: center; */
+  //   align-items: center;
+  //   width: 40%;
+  //   justify-content: center;
+  //   left: 0;
 }
 
 .card-show-question-title {
@@ -107,9 +108,9 @@
 
 .card-category__questions-question-day {
   margin: auto;
-  width: 190px;
-  height: 40%;
-  padding: 15px 5px 5px 5px;
+  // width: 190px;
+  // height: 40%;
+  padding: 10px;
   font-family: 'Nunito';
   font-style: normal;
   font-weight: 600;
@@ -118,6 +119,7 @@
   color: #D77B3E;
   display: flex;
   align-items: center;
+  flex-direction: column;
 }
 
 .card-category__form {

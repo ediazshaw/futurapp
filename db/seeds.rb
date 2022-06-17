@@ -285,15 +285,15 @@ event_category = Category.where(category: "Event").first
     file = File.open(Rails.root.join('app/assets/images/category/birds.jpg'))
     question_day.photo.attach(io: file, filename: "birds.jpg", content_type: 'image/jpg')
 
-# Creating questions for 70 days
-# IMPORTANT ONLY RUN SEEDS ON THURSDAYS OR YOU WILL HAVE TO CHANGE THE CODE FOR DATE
+# Creating questions until 5th or 6th of january
+# IMPORTANT ONLY RUN SEEDS ON FRIDAYS OR YOU WILL HAVE TO CHANGE THE CODE FOR DATE
 # Mondays
 a = 0
-question_introspective.first(10).each do |introspective|
+question_introspective.first(29).each do |introspective|
   question_day = QuestionDay.create(
     question: introspective,
     theme: "Introspection: #{introspective}",
-    date: (Date.today - 3 + a).strftime("%Y-%m-%d"),
+    date: (Date.today - 4 + a).strftime("%Y-%m-%d"),
     category: thought_category
   )
   file = File.open(Rails.root.join('app/assets/images/category/introspective.jpg'))
@@ -304,11 +304,11 @@ end
 
 # Tuesdays
 b = 0
-question_unanswerable.first(10).each do |unanswerable|
+question_unanswerable.first(29).each do |unanswerable|
   question_day = QuestionDay.create(
     question: unanswerable,
     theme: "Mistery: #{unanswerable}",
-    date: (Date.today - 2 + b).strftime("%Y-%m-%d"),
+    date: (Date.today - 3 + b).strftime("%Y-%m-%d"),
     category: prediction_category
   )
   file = File.open(Rails.root.join('app/assets/images/category/mistery.jpg'))
@@ -319,11 +319,11 @@ end
 
 # Wednesdays
 c = 0
-question_future_total.first(10).each do |future_total|
+question_future_total.first(29).each do |future_total|
   question_day = QuestionDay.create(
     question: future_total,
     theme: "Mistery: #{future_total}",
-    date: (Date.today - 1 + c).strftime("%Y-%m-%d"),
+    date: (Date.today - 2 + c).strftime("%Y-%m-%d"),
     category: prediction_category
   )
   file = File.open(Rails.root.join('app/assets/images/category/future.jpg'))
@@ -334,11 +334,11 @@ end
 
 # Thrusdays
 d = 0
-question_preference.first(10).each do |preference|
+question_preference.first(29).each do |preference|
   question_day = QuestionDay.create(
     question: preference,
     theme: "Preference: #{preference}",
-    date: (Date.today + d).strftime("%Y-%m-%d"),
+    date: (Date.today - 1 + d).strftime("%Y-%m-%d"),
     category: thought_category
   )
   file = File.open(Rails.root.join('app/assets/images/category/preference.jpg'))
@@ -350,11 +350,11 @@ end
 
 # Fridays
 g = 0
-question_would_you_rather.first(10).each do |would_you_rather|
+question_would_you_rather.first(29).each do |would_you_rather|
   question_day = QuestionDay.create(
     question: would_you_rather,
     theme: "Would you Rather: #{would_you_rather}",
-    date: (Date.today + 1 + g).strftime("%Y-%m-%d"),
+    date: (Date.today + g).strftime("%Y-%m-%d"),
     category: thought_category
   )
   file = File.open(Rails.root.join('app/assets/images/category/wyr.png'))
@@ -365,11 +365,11 @@ end
 
 # Saturdays
 e = 0
-question_trivia.first(10).each do |trivia|
+question_trivia.first(29).each do |trivia|
   question_day = QuestionDay.create(
     question: trivia,
     theme: "Trivia: #{trivia}",
-    date: (Date.today + 2 + e).strftime("%Y-%m-%d"),
+    date: (Date.today + 1 + e).strftime("%Y-%m-%d"),
     category: thought_category
   )
   file = File.open(Rails.root.join('app/assets/images/category/trivia.jpg'))
@@ -380,11 +380,11 @@ end
 
 # Sundays
 f = 0
-question_family.first(10).each do |family|
+question_family.first(29).each do |family|
   question_day = QuestionDay.create(
     question: "Ask your family: #{family}",
     theme: "Family: #{family}",
-    date: (Date.today + 3 + f).strftime("%Y-%m-%d"),
+    date: (Date.today + 2 + f).strftime("%Y-%m-%d"),
     category: thought_category
   )
   file = File.open(Rails.root.join('app/assets/images/category/family.jpg'))
