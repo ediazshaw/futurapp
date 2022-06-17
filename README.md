@@ -1,1 +1,3 @@
-Rails app generated with [lewagon/rails-templates](https://github.com/lewagon/rails-templates), created by the [Le Wagon coding bootcamp](https://www.lewagon.com) team.
+<!-- <h1 align="center">Futurapp</h1>
+<p align="left"> <img src="https://komarev.com/ghpvc/?username=ediazshaw&label=Profile%20views&color=0e75b6&style=flat" alt="ediazshaw" /> </p>
+<h3 align="center">Futurapp is a Web-App that allows the users to see how they have developed their understanding of life throught the years.It is the capstone Web Application group project for the Le Wagon bootcamp in Madrid. FuturApp helps you keep your thoughts and events organized in its timeline, allows you to make predictions for your future, and share predictions within its forum. The project was designed on Figma, implemented with Ruby on Rails, HTML, CSS, JavaScript, and different APIs.</h3> -->
