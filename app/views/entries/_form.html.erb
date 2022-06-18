@@ -6,7 +6,7 @@
             input_html: {class: 'category-selector', data: { action: "click->entry-card#toggleCard" }},
             value_method: :id, as: :radio_buttons, legend_tag: false, boolean_style: :inline, error: 'category is mandatory, please select one!' %>
   <%= f.input :theme %>
-  <%= f.input :remember_date, label: "Remember date", as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "Pick a date here" %>
+  <%= f.input :remember_date, label: "Choose a date if you want to be reminded of this entry in the future", as: :string, required: false, input_html: {class: "datepicker"}, placeholder: "Pick a date here" %>
   <%= f.input :comment, placeholder: 'Type your answer here...', label: false %>
   <%= f.label "Do you want this entry to be private?" %>
   <%= f.label "It will not be visible for other users in the forum" %>
