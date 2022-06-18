@@ -19,6 +19,9 @@ class EntriesController < ApplicationController
   def create
     @entry = Entry.new(entry_params)
     @entry.user = current_user
+    if @entry.remember_date == nil
+      @entry.remember_date = Date.today
+    end
     if @entry.save
       redirect_to entries_path(anchor: 'go-today')
     else
